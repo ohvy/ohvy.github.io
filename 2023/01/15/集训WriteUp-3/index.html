@@ -12,7 +12,7 @@
 
 
 
-<title>Archives | Stuuupid&#39;s Blog</title>
+<title>集训WriteUp-3 | Stuuupid&#39;s Blog</title>
 
 
 
@@ -408,59 +408,182 @@
     }
 </script>
         <div class="main">
-            <div class="post-wrap archive">
+            <div class="container">
     
     
-    
-        
-        
-        
-        
-                
-                
-                    <h3>2022</h3>
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2022/12/06/2022DASCTF-MAY-%E5%87%BA%E9%A2%98%E4%BA%BA%E6%8C%91%E6%88%98%E8%B5%9B-web/">2022DASCTF MAY 出题人挑战赛 web</a>
-                    <span class="archive-item-date">December 6, 2022</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2022/12/06/2022DASCTF-Sept-X-%E6%B5%99%E6%B1%9F%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%A7%8B%E5%AD%A3%E6%8C%91%E6%88%98%E8%B5%9B-web/">2022DASCTF Sept X 浙江工业大学秋季挑战赛 web</a>
-                    <span class="archive-item-date">December 6, 2022</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2022/12/06/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%EF%BC%88SSTI%EF%BC%89/">服务器端模板注入（SSTI）</a>
-                    <span class="archive-item-date">December 6, 2022</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2022/12/05/Hello-Stuuupid/">Hello, Stuuupid</a>
-                    <span class="archive-item-date">December 5, 2022</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2022/12/04/hello-world/">Hello World</a>
-                    <span class="archive-item-date">December 4, 2022</span>
-                </article>
-        
-        
-        <nav class="pagination">
-            <a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-        </nav>
-        
-    
-  
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
 </div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">集训WriteUp-3</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Ex1Le23</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 15, 2023&nbsp;&nbsp;16:55:35</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Wp-web/">Wp-web</a>
+                            
+                        </span>
+                    
+                    
+                        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<span class="site-pv">
+    总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>2023-01-15 WP</p>
+<h1 id="T1-hgame-2023-v2board"><a href="#T1-hgame-2023-v2board" class="headerlink" title="T1 [hgame 2023]v2board"></a>T1 [hgame 2023]v2board</h1><p><a target="_blank" rel="noopener" href="https://hgame.vidar.club/contest/3">题目地址</a></p>
+<p>题目考察去年12月份的一个V2Board v1.6.1版本的Admin.php越权访问漏洞（注册个号进去看看就会发现左下角的”V2Board v1.6.1”，放bing上一查就能看到）。其原理这里就不赘述，放一个利用的过程：</p>
+<ol>
+<li>任意注册一个账号，通过<code>/api/v1/passport/auth/login</code>接口登录时用抓包工具获取响应包的<code>auth_data</code></li>
+</ol>
+<img src="/2023/01/15/%E9%9B%86%E8%AE%ADWriteUp-3/1-1.png" class="" title="获取auth_data">
+
+<ol start="2">
+<li>然后访问<code>/api/v1/user/info</code>接口，并将上述获得的<code>auth_data</code>作为<code>authorization</code>头发送，这一步的目的是让服务器将普通用户的Authorization头写入缓存中（事实上这里自动实现了，auth_data 会随着登录缓存于 Redis ）</li>
+</ol>
+<img src="/2023/01/15/%E9%9B%86%E8%AE%ADWriteUp-3/1-2.png" class="" title="缓存">
+
+<ol start="3">
+<li>最后只要带上这个Authorization头即可访问所有的管理员接口，比如<code>/api/v1/admin/user/fetch</code>等</li>
+</ol>
+<img src="/2023/01/15/%E9%9B%86%E8%AE%ADWriteUp-3/1-3.png" class="" title="token">
+
+<p>可以直接在上图找到admin的订阅token（对着源码找接口找了半天，以为订阅会在plan接口中。没注意到“众所周知v2board的管理员信息和用户信息都在user表，仅用is_admin字段区分是否管理员”，纯纯大怨种）</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/v2board/v2board/blob/master/app/Http/Routes/AdminRoute.php">路由接口源码</a><br><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/k_3IoymZL510wET8P3YHAw?ref=www.ctfiot.com">V2Board Admin.php 越权访问漏洞</a><br><br><a target="_blank" rel="noopener" href="https://zgao.top/v2board-v-1-6-1-%e6%9c%ba%e5%9c%ba%e9%9d%a2%e6%9d%bf%e7%ae%a1%e7%90%86%e6%8e%a5%e5%8f%a3%e8%b6%8a%e6%9d%83%e6%bc%8f%e6%b4%9e%e5%88%86%e6%9e%90/">v2board v.1.6.1 机场面板管理接口越权漏洞分析</a></p>
+</blockquote>
+<h1 id="T2-hgame-2023-Search-Commodity"><a href="#T2-hgame-2023-Search-Commodity" class="headerlink" title="T2 [hgame 2023]Search Commodity"></a>T2 [hgame 2023]Search Commodity</h1><p><a target="_blank" rel="noopener" href="https://hgame.vidar.club/contest/3">题目地址</a></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/CTF/"># CTF</a>
+                    
+                        <a href="/tags/web/"># web</a>
+                    
+                        
+                </span>
+            </div>
+            <div class="reward" >
+                
+                    
+
+                
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-2/">集训WriteUp-2</a>
+            
+        </section>
+
+        
+
+    </article>
+</div>
+
         </div>
         <footer id="footer" class="footer">
     <div class="copyright">
