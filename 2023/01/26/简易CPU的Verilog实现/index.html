@@ -250,7 +250,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon May 06 2024 21:22:04 GMT+0800">2024-05-06 21:22:04</span>
+                <span class="datetime" data-updated="Mon May 06 2024 21:40:51 GMT+0800">2024-05-06 21:40:51</span>
             </span>
         
 
@@ -296,24 +296,24 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <p>本次实验需要实现一个 CPU 的运算器。简易运算器由三个 8 位寄存器（R0、R1、R2）和一<br>个算术逻辑单元 (ALU) 构成，其中 ALU 应该至少支持加法、减法、乘法，与、或、或非、与<br>非、比较的功能，输入由开关控制。</p>
+                    <p>本次实验需要实现一个 CPU 的运算器。简易运算器由三个 8 位寄存器（R0、R1、R2）和一个算术逻辑单元 (ALU) 构成，其中 ALU 应该至少支持加法、减法、乘法，与、或、或非、与非、比较的功能，输入由开关控制。</p>
 <span id="more"></span>
 <h1 id="实验任务及说明"><a href="#实验任务及说明" class="headerlink" title="实验任务及说明"></a>实验任务及说明</h1><h2 id="实验任务"><a href="#实验任务" class="headerlink" title="实验任务"></a>实验任务</h2><ul>
-<li>本次实验需要实现一个 CPU 的运算器。简易运算器由三个 8 位寄存器（R0、R1、R2）和一<br>个算术逻辑单元 (ALU) 构成，其中 ALU 应该至少支持加法、减法、乘法，与、或、或非、与<br>非、比较的功能。</li>
-<li>输入由开关控制；每一步运算后，相应标志位（标志位设置同实验四）的情况通过 LED 灯表<br>示；运算结果以十进制通过数码管显示。读取数据的结果以十进制通过数码管显示。</li>
+<li>本次实验需要实现一个 CPU 的运算器。简易运算器由三个 8 位寄存器（R0、R1、R2）和一个算术逻辑单元 (ALU) 构成，其中 ALU 应该至少支持加法、减法、乘法，与、或、或非、与非、比较的功能。</li>
+<li>输入由开关控制；每一步运算后，相应标志位（标志位设置同实验四）的情况通过 LED 灯表示；运算结果以十进制通过数码管显示。读取数据的结果以十进制通过数码管显示。</li>
 <li>时钟信号、复位信号等控制信号允许用开关控制。</li>
 </ul>
 <blockquote>
-<p>注：1. 本次实验涉及的数据皆为补码。<br>2. 实验说明给出的默认指令集由定长指令构成，其中<br>指令的操作码为变长操作码。</p>
+<p>注：1. 本次实验涉及的数据皆为补码。<br>2. 实验说明给出的默认指令集由定长指令构成，其中指令的操作码为变长操作码。</p>
 </blockquote>
 <h2 id="实验说明"><a href="#实验说明" class="headerlink" title="实验说明"></a>实验说明</h2><ol>
 <li>实验使用八位二进制串（b7b6b5b4b3b2b1b0）表示指令，与开发板上的八个开关对应。</li>
 <li>实验使用四位二进制补码作为输入，与开发板上的四个开关对应。</li>
 <li>三个寄存器 R0，R1，R2 分别对应二进制地址码 00,01,10.</li>
 </ol>
-<h3 id="运算指令格式"><a href="#运算指令格式" class="headerlink" title="运算指令格式"></a>运算指令格式</h3><p>高四位 (b7b6b5b4) 为操作码，次低两位（b3b2）为地址码（指明存放第一个操作数的寄存器），<br>最低两位 (b1b0) 为地址码（指明存放第二个操作数的寄存器）。</p>
+<h3 id="运算指令格式"><a href="#运算指令格式" class="headerlink" title="运算指令格式"></a>运算指令格式</h3><p>高四位 (b7b6b5b4) 为操作码，次低两位（b3b2）为地址码（指明存放第一个操作数的寄存器），最低两位 (b1b0) 为地址码（指明存放第二个操作数的寄存器）。</p>
 <blockquote>
-<p>注：运算结果始终默认存放至寄存器 R2 因此不在指令中显式指出。有符号乘法的结果若超过<br>8 比特应当解释为溢出。</p>
+<p>注：运算结果始终默认存放至寄存器 R2 因此不在指令中显式指出。有符号乘法的结果若超过8 比特应当解释为溢出。</p>
 </blockquote>
 <p>操作码对应的运算操作由下表说明，其中 A 表示第一个操作数，B 表示第二个操作数。</p>
 <table>
@@ -359,8 +359,8 @@
 <blockquote>
 <p>例：<br><br>指令 0010-0001 表示计算寄存器 R0 的值加上寄存器 R1 的值。<br><br>指令 0110-0110 表示计算寄存器 R1 的值减去寄存器 R2 的值。</p>
 </blockquote>
-<h3 id="存储指令格式"><a href="#存储指令格式" class="headerlink" title="存储指令格式"></a>存储指令格式</h3><p>最高两位（b7b6）为操作码置 10，次高两位（b5b4）为写入寄存器的地址码，低四位（b3b2b1b0）<br>为待写入数据的二进制补码。</p>
-<h3 id="读取指令格式"><a href="#读取指令格式" class="headerlink" title="读取指令格式"></a>读取指令格式</h3><p>最高六位（b7b6b5b4b3b2）为操作码置 111100，最低两位（b1b0）为地址码置 10。要求该指<br>令可读取寄存器 R2 的值并以十进制通过数码管显示。</p>
+<h3 id="存储指令格式"><a href="#存储指令格式" class="headerlink" title="存储指令格式"></a>存储指令格式</h3><p>最高两位（b7b6）为操作码置 10，次高两位（b5b4）为写入寄存器的地址码，低四位（b3b2b1b0）为待写入数据的二进制补码。</p>
+<h3 id="读取指令格式"><a href="#读取指令格式" class="headerlink" title="读取指令格式"></a>读取指令格式</h3><p>最高六位（b7b6b5b4b3b2）为操作码置 111100，最低两位（b1b0）为地址码置 10。要求该指令可读取寄存器 R2 的值并以十进制通过数码管显示。</p>
 <blockquote>
 <p>注：不强制要求支持读取并显示 R0，R1 寄存器的数据。</p>
 </blockquote>
@@ -372,8 +372,8 @@
                         class="" title="数据通路"
                  >
 
-<p>CPU 实现在 Control、ALU、Reg 三个模块之上。其中 Control 模块用来处理来自开关的数据，<br>获取使能信号；ALU 模块用来进行算术逻辑运算；Reg 模块用来处理数据的存储与读取。</p>
-<h2 id="Control-模块的设计与实现"><a href="#Control-模块的设计与实现" class="headerlink" title="Control 模块的设计与实现"></a>Control 模块的设计与实现</h2><p>如上文所言，Control 控制层需要接收来自开关的 opcode 指令，然后根据指令判断是否存入<br>(EnWrite)、读取 (EnRead_single)、调用 ALU 运算 (alu)。同时，Control 模块还需要接收复位信<br>号 (也就是这里的 Enter)，当 Enter 为 1 时，对已经完成输入的 opcde 进行处理，并返回 OP 指令，<br>供后续模块调用；当 Enter 为 0 时，将所有使能信号置零，并且不输出 OP 指令。<br>实现代码如下：</p>
+<p>CPU 实现在 Control、ALU、Reg 三个模块之上。其中 Control 模块用来处理来自开关的数据，获取使能信号；ALU 模块用来进行算术逻辑运算；Reg 模块用来处理数据的存储与读取。</p>
+<h2 id="Control-模块的设计与实现"><a href="#Control-模块的设计与实现" class="headerlink" title="Control 模块的设计与实现"></a>Control 模块的设计与实现</h2><p>如上文所言，Control 控制层需要接收来自开关的 opcode 指令，然后根据指令判断是否存入(EnWrite)、读取 (EnRead_single)、调用 ALU 运算 (alu)。同时，Control 模块还需要接收复位信号 (也就是这里的 Enter)，当 Enter 为 1 时，对已经完成输入的 opcde 进行处理，并返回 OP 指令，供后续模块调用；当 Enter 为 0 时，将所有使能信号置零，并且不输出 OP 指令。实现代码如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
                 </div>
