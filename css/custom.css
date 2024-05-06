@@ -1,0 +1,92 @@
+.gt-container {
+  max-width: 780px;
+  margin: auto;
+}
+.gutter {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+}
+.post-content figure.highlight figcaption {
+  text-align: left;
+}
+.busuanzi-value {
+  color: #2d96bd;
+}
+.sponser {
+  position: relative;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.sponser .sponser_btn {
+  padding: 3px 25px;
+}
+.sponser .sponser_container {
+  display: flex;
+  flex-direction: column;
+}
+.sponser .sponser_container .sponser_header {
+  height: 40px;
+  line-height: 40px;
+  color: #999;
+  border-bottom: 1px solid #f3f3f3;
+  text-align: center;
+}
+.sponser .sponser_container .sponser_body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.sponser .sponser_container .sponser_body .alipay {
+  display: flex;
+  flex-direction: column;
+}
+.sponser .sponser_container .sponser_body .alipay .sponser_alipay_title {
+  color: #81a6ed;
+  text-align: center;
+}
+.sponser .sponser_container .sponser_body .alipay .sponser_alipay {
+  width: 150px;
+  height: 150px;
+}
+.sponser:hover .sponser_img {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 460px;
+  height: 292px;
+  margin-top: -303px;
+  margin-left: -175px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 4px;
+}
+.sponser_img {
+  display: none;
+}
+@media screen and (max-width: 479px) {
+  .post-tags {
+    display: flex;
+    flex-direction: column;
+  }
+  .reward {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 15px 0;
+  }
+}
+summary {
+  padding: 10px;
+  background: #f6f6f6;
+  border-radius: 5px;
+  cursor: pointer;
+}
+summary mark {
+  background-color: #f6f6f6;
+}

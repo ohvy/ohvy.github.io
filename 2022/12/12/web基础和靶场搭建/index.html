@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Latte">
+    
+    <title>
+        
+            web基础和靶场搭建 |
+        
+        Latte&#39;s
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"ohvy.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Latte's","author":"Latte","avatar":"/images/cat.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","tools":"/tools","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Latte and Americano.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/ohvy","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"shiwwang@163.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"ohvy","github_admins":null,"repository":"gitalk","client_id":"Ov23liQm7PTQpK5JLa0h","client_secret":"ba0525d7d59a301a09ac76ed9299df6ceb9a42a5","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},{"category":"待开发"}]},"version":"4.1.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Latte&#39;s
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tools"
+                            >
+                                
+                                工具
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tools"
+                    >工具</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        web基础和靶场搭建
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/cat.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Latte</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-12-12 22:17:26</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon May 06 2024 20:08:30 GMT+0800">2024-05-06 20:08:30</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%B8%97%E9%80%8F%EF%BC%9A%E4%BB%8E0%E5%88%B01/">渗透：从0到1</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/web/">web</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <p>Web是互联网的总称，全称即World Wide Web， 缩写为WWW，全球广域网，也称为万维网，它是一种基于超文本和HTTP的、全球性的、动态交互的、跨平台的分布式图形信息系统。简单来说，Web是一种体系结构，通过它可以访问遍布于因特网主机上的连接文档。<br>web安全简单来说就是网站的安全，那么我们需要学习的是，网站上可能出现哪些漏洞（常见漏洞类型和原理），如何<strong>寻找</strong>这些漏洞，如何<strong>利用</strong>这些漏洞。本文可以作为“渗透：从0到1”的先导篇目。</p>
+<span id="more"></span>
+<h1 id="漏洞挖掘"><a href="#漏洞挖掘" class="headerlink" title="漏洞挖掘"></a>漏洞挖掘</h1><h2 id="漏洞定义"><a href="#漏洞定义" class="headerlink" title="漏洞定义"></a>漏洞定义</h2><p>对于漏洞的官方定义：漏洞是在硬件、软件、协议的具体实现或系统安全策略上存在的缺陷，从而使攻击者能在未授权的情况下访问或破坏系统。通俗的讲，只要可以给厂商带来损失的都可以被叫做漏洞。</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/12/web%E5%9F%BA%E7%A1%80%E5%92%8C%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98.png"
+                        class="" title="漏洞挖掘"
+                 >
+
+<h2 id="漏洞类型-OWASP-Top-10-2021-and-part-of-Top-10-2017"><a href="#漏洞类型-OWASP-Top-10-2021-and-part-of-Top-10-2017" class="headerlink" title="漏洞类型(OWASP Top 10 2021 and part of Top 10 2017)"></a>漏洞类型(OWASP Top 10 2021 and part of Top 10 2017)</h2><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A01</td>
+<td align="left">2021-失效的访问控制(Broken Access Control)</td>
+</tr>
+<tr>
+<td align="center">A02</td>
+<td align="left">2021-加密机制失败(Cryptographic Failures)</td>
+</tr>
+<tr>
+<td align="center">A03</td>
+<td align="left">2021-注入(Injection)</td>
+</tr>
+<tr>
+<td align="center">A04</td>
+<td align="left">2021-不安全设计(Insecure Design)</td>
+</tr>
+<tr>
+<td align="center">A05</td>
+<td align="left">2021-安全配置错误(Security Misconfiguration)</td>
+</tr>
+<tr>
+<td align="center">A06</td>
+<td align="left">2021-自带缺陷和过时的组件(Vulnerable and Outdated Components)</td>
+</tr>
+<tr>
+<td align="center">A07</td>
+<td align="left">2021-身份识别和身份验证错误(Identification and Authentication Failures)</td>
+</tr>
+<tr>
+<td align="center">A08</td>
+<td align="left">2021-软件和数据完整性故障(Software and Data Integrity Failures)</td>
+</tr>
+<tr>
+<td align="center">A09</td>
+<td align="left">2021-安全日志和监控故障(Security Logging and Monitoring Failures)</td>
+</tr>
+<tr>
+<td align="center">A10</td>
+<td align="left">2021-服务端请求伪造(Sever-Side Request Forgery)</td>
+</tr>
+<tr>
+<td align="center">A03</td>
+<td align="left">2017-敏感信息泄露(Sensitive Data Exposure)</td>
+</tr>
+<tr>
+<td align="center">A07</td>
+<td align="left">2017-跨站脚本攻击(XSS)</td>
+</tr>
+<tr>
+<td align="center">A08</td>
+<td align="left">2017-不安全的反序列化</td>
+</tr>
+<tr>
+<td align="center">A09</td>
+<td align="left">2017-使用含有已知漏洞的组件</td>
+</tr>
+<tr>
+<td align="center">A10</td>
+<td align="left">2017-不足的日志记录和监控</td>
+</tr>
+</tbody></table>
+<p>不难发现，许多CTF比赛的web题就是从这些漏洞中出题，因此必须对常见的漏洞进行具体细致的了解，这也是“挖洞”的基础。</p>
+<h1 id="漏洞靶场之DVWA"><a href="#漏洞靶场之DVWA" class="headerlink" title="漏洞靶场之DVWA"></a>漏洞靶场之DVWA</h1><p>DVWA是OWASP官方编写的PHP网站，包含了各种网站常见漏洞，可以学习攻击及修复方式。关于靶场的搭建，可以用源码配合phpStudy小皮面板实现（市面上有许多种类的靶场，另一个我正在学习使用的就是pikachu），具体步骤可参考如下过程：</p>
+<h2 id="DVWA的安装"><a href="#DVWA的安装" class="headerlink" title="DVWA的安装"></a>DVWA的安装</h2><blockquote>
+<p>1 下载安装 phpStudy 和 DVWA源码</p>
+</blockquote>
+<p>可以根据需要，下载合适版本的phpStudy.</p>
+<p>phpStudy下载地址:<a class="link"   target="_blank" rel="noopener" href="https://www.xp.cn/download.html" >phpStudy<i class="fas fa-external-link-alt"></i></a></p>
+<p>接下来获取DVWA靶场源代码.</p>
+<p>DVWA源代码下载地址1:<a class="link"   target="_blank" rel="noopener" href="https://github.com/digininja/DVWA/archive/master.zip" >DVWA源码<i class="fas fa-external-link-alt"></i></a></p>
+<p>DVWA源代码下载地址2:<a class="link"   target="_blank" rel="noopener" href="https://github.com/ethicalhack3r/DVWA/archive/master.zip" >DVWA源码<i class="fas fa-external-link-alt"></i></a></p>
+<blockquote>
+<p>2 将解压后的DVWA源代码放置phpStudy的安装目录<strong>WWW文件夹</strong>中(有时需要修改源代码文件夹名dvwa-master为DVWA)</p>
+</blockquote>
+<blockquote>
+<p>3 进入DVWA&#x2F;config目录，将config.inc.php.dist中的dist删去</p>
+</blockquote>
+<blockquote>
+<p>4 打开刚刚重命名的config.inc.php文件，修改db_user和db_password  &#x2F;&#x2F;默认改为root root</p>
+</blockquote>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/12/web%E5%9F%BA%E7%A1%80%E5%92%8C%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B.png"
+                        class="" title="示例"
+                 >
+
+<p>DVWA在创建的时候需要在本地安装创建一个数据库(database)，也就意味着需要连接到本地已有的MySQL的数据库的软件，然后再用这个软件去创建一个DVWA的数据库。因此，其需要MySQL账号密码授权。这里我没有使用phpStudy的MySQL，而是使用本地自己安装的MySQL，用户名为root，密码为123@hui.<br>如下图生成一个数据库</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/12/web%E5%9F%BA%E7%A1%80%E5%92%8C%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/database.png"
+                        class="" title="database示例"
+                 >
+
+<p>而对于phpStudy中集成的MySQL服务的账号密码默认为root和root，故若使用phpStudy中的MySQL，需要将修改db_user和db_password为root和root.</p>
+<blockquote>
+<p>5 浏览器访问<a class="link"   target="_blank" rel="noopener" href="http://localhost/DVWA/setup.php" >http://localhost/DVWA/setup.php<i class="fas fa-external-link-alt"></i></a>, 点击最下方的Create Database.</p>
+</blockquote>
+<blockquote>
+<p>6 浏览器访问<a class="link"   target="_blank" rel="noopener" href="http://localhost/DVWA/" >http://localhost/DVWA/<i class="fas fa-external-link-alt"></i></a>, 输入用户名admin，密码password，登录DVWA即可。</p>
+</blockquote>
+<h2 id="DVWA的使用"><a href="#DVWA的使用" class="headerlink" title="DVWA的使用"></a>DVWA的使用</h2><p>在DVWA Security中可以手动调整靶机源码的安全级别，分别为 Low，Medium，High，Impossible，级别越高，安全防护越严格，渗透难度越大。一般 Low 级别基本没有做防护或者只是最简单的防护，很容易就能够渗透成功；而 Medium 会使用到一些非常粗糙的防护，需要使用者懂得如何去绕过防护措施；High 级别的防护则会大大提高防护级别，一般 High 级别的防护需要经验非常丰富才能成功渗透；最后 Impossible 基本是不可能渗透成功的，所以 Impossible 的源码一般可以被参考作为生产环境 Web 防护的最佳手段。</p>
+<p>DVWA 一共包含了十个攻击模块，分别是：Brute Force（暴力（破解））、Command Injection（命令行注入）、CSRF（跨站请求伪造）、- File Inclusion（文件包含）、File Upload（文件上传）、Insecure CAPTCHA （不安全的验证码）、SQL Injection（SQL注入）、SQL Injection（Blind）（SQL盲注）、XSS（Reflected）（反射型跨站脚本）、XSS（Stored）（存储型跨站脚本）。包含了 OWASP TOP10 的所有攻击漏洞的练习环境，一站式解决所有 Web 渗透的学习环境。</p>
+<h1 id="Docker基础"><a href="#Docker基础" class="headerlink" title="Docker基础"></a>Docker基础</h1><p>Docker，即“容器”，便于环境的移植、安装和管理，并且具有很高的安全性。容易想象，如果用以上的办法部署DVWA靶场，当靶场被攻击时，本地将会是非常危险的。</p>
+<h2 id="认识Docker"><a href="#认识Docker" class="headerlink" title="认识Docker"></a>认识Docker</h2><p>Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的Linux或Windows操作系统的机器上，也可以实现虚拟化。容器是<strong>完全使用沙箱机制，相互之间不会有任何接口</strong></p>
+<h2 id="Docker安装和配置"><a href="#Docker安装和配置" class="headerlink" title="Docker安装和配置"></a>Docker安装和配置</h2><p>这里在kali-linux-2022.1操作系统中进行Docker的安装和配置。</p>
+<h3 id="查看系统信息和内核版本"><a href="#查看系统信息和内核版本" class="headerlink" title="查看系统信息和内核版本"></a>查看系统信息和内核版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -a  # 显示系统信息</span><br><span class="line">uname -v  # 显示内核版本</span><br></pre></td></tr></table></figure>
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/12/web%E5%9F%BA%E7%A1%80%E5%92%8C%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/%E7%89%88%E6%9C%AC%E5%86%85%E6%A0%B8.png"
+                        class="" title="系统信息和内核版本"
+                 >
+
+<h3 id="更换apt源"><a href="#更换apt源" class="headerlink" title="更换apt源"></a>更换apt源</h3><p>默认的源在国外，我们通过这个源去下载时耗时将会很久，换源可以提高效率。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list  # apt源路径: /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<p>按<code>i</code>进入编辑模式，从以下国内源中选择一个复制进去然后按<code>esc</code>键输入<code>:wq</code>保存退出。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#中科大</span><br><span class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">#阿里云</span><br><span class="line">#deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">#deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">#清华大学</span><br><span class="line">#deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">#deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">#浙大</span><br><span class="line">#deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">#deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">#东软大学</span><br><span class="line">#deb http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line">#deb-src http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line">#重庆大学</span><br><span class="line">#deb http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line">#deb-src http://http.kali.org/kali kali-rolling main non-free contrib</span><br></pre></td></tr></table></figure>
+
+<p>感谢CSDN博主「卑微的那菈」整理的2022年全新kali国内源 <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/fingue/article/details/127096363" >KALI更换国内源（2022年全新）<i class="fas fa-external-link-alt"></i></a></p>
+<p>这里我使用的是中科大的源</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/12/web%E5%9F%BA%E7%A1%80%E5%92%8C%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/%E6%8D%A2%E6%BA%90.png"
+                        class="" title="换源"
+                 >
+
+<p>之后更新apt源即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<h3 id="Docker安装和验证"><a href="#Docker安装和验证" class="headerlink" title="Docker安装和验证"></a>Docker安装和验证</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y docker docker-compose   # 安装docker和docker-compose，-y表示默认全部yes</span><br></pre></td></tr></table></figure>
+
+<p>待安装完成后，可用以下命令查看版本信息，以验证docker是否安装成功。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker --version # 查看版本</span><br><span class="line">docker-compose --version # 查看版本</span><br></pre></td></tr></table></figure>
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/12/web%E5%9F%BA%E7%A1%80%E5%92%8C%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/docker.png"
+                        class="" title="docker安装验证"
+                 >
+
+<h3 id="启停管理"><a href="#启停管理" class="headerlink" title="启停管理"></a>启停管理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start/stop/restart docker # 启动、停止、重启docker</span><br></pre></td></tr></table></figure>
+
+<p>通过以上命令即可以实现Docker的启停。</p>
+<h3 id="配置加速器"><a href="#配置加速器" class="headerlink" title="配置加速器"></a>配置加速器</h3><p>使用Docker的时候，需要经常从官方获取镜像，但是由于网络原因，拉取镜像的过程非常耗时，严重影响Docker的使用。因此可以通过配置加速器来解决。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 添加一个daemon.json</span><br><span class="line">sudo vim /etc/docker/daemon.json</span><br><span class="line"># 将以下镜像注册copy进daemon.json中</span><br><span class="line">&#123; &quot;registry-mirrors&quot;: [</span><br><span class="line">    &quot;https://dockerhub.azk8s.cn&quot;,</span><br><span class="line">    &quot;https://reg-mirror.qiniu.com&quot;,</span><br><span class="line">    &quot;https://1rqfztnd.mirror.aliyuncs.com&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>写入daemon.json文件后，下面使加速器生效。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload  # 重新加载配置文件</span><br><span class="line">sudo systemctl restart docker # 重启docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="Docker安装、运行DVWA靶场"><a href="#Docker安装、运行DVWA靶场" class="headerlink" title="Docker安装、运行DVWA靶场"></a>Docker安装、运行DVWA靶场</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo docker search dvwa # 搜索DVWA</span><br><span class="line">sudo docker pull citizenstig/dvwa # 拉取安装指定dvwa</span><br><span class="line">sudo docker run --rm --name dvwa -it -p 8888:80 citizenstig/dvwa  # docker运行dvwa</span><br><span class="line">netstat -ntulp | grep 8888  # 查看容器指定端口是否被打开</span><br><span class="line">访问 http://localhost:8888 进行dvwa的访问</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：容器在运行时会生成一个镜像，镜像在生成后会处于几种状态：运行中和已停止，<code>--rm</code>命令使镜像在停止之后自动删除。需要保留镜像时就可以不加该参数；<code>--name dvwa</code>为镜像起名为dvwa；<code>-p</code>可理解为端口的映射，即把外部的8888端口映射镜像的80端口，通过访问外部8888端口，即可访问到80端口。</p>
+</blockquote>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/12/web%E5%9F%BA%E7%A1%80%E5%92%8C%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA/re.png"
+                        class=""
+                 >
+
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/web/">web</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2022/12/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"
+                                   title="数据库基础"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">数据库基础</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/12/06/2022Dest0g3-520%E8%BF%8E%E6%96%B0%E8%B5%9B-web(1-5%E9%A2%98)/"
+                                   title="2022Dest0g3-520迎新赛-web(1-5题)"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2022Dest0g3-520迎新赛-web(1-5题)</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script 
+                src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initGitalk = () => {
+            let gitalkPathname = decodeURI(location.pathname)
+            const gitalkPathnameLength = gitalkPathname.length
+            const gitalkPathnameMaxLength = 50
+            if (gitalkPathnameLength > gitalkPathnameMaxLength) {
+              gitalkPathname = gitalkPathname.substring(0, gitalkPathnameMaxLength - 3) + '...'
+            }
+
+            if (window?.Gitalk) {
+              new Gitalk({
+                clientID: 'Ov23liQm7PTQpK5JLa0h',
+                clientSecret: 'ba0525d7d59a301a09ac76ed9299df6ceb9a42a5',
+                repo: 'gitalk',
+                owner: 'ohvy',
+                admin: 'ohvy',
+                id: gitalkPathname,
+                proxy: '',
+                language: 'zh-CN'
+              }).render('gitalk-container')
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initGitalk()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGitalk()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initGitalk)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98"><span class="nav-text">漏洞挖掘</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%AE%9A%E4%B9%89"><span class="nav-text">漏洞定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B-OWASP-Top-10-2021-and-part-of-Top-10-2017"><span class="nav-text">漏洞类型(OWASP Top 10 2021 and part of Top 10 2017)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E4%B9%8BDVWA"><span class="nav-text">漏洞靶场之DVWA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DVWA%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-text">DVWA的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DVWA%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">DVWA的使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%9F%BA%E7%A1%80"><span class="nav-text">Docker基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86Docker"><span class="nav-text">认识Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="nav-text">Docker安装和配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E5%92%8C%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC"><span class="nav-text">查看系统信息和内核版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2apt%E6%BA%90"><span class="nav-text">更换apt源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85%E5%92%8C%E9%AA%8C%E8%AF%81"><span class="nav-text">Docker安装和验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%81%9C%E7%AE%A1%E7%90%86"><span class="nav-text">启停管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%8A%A0%E9%80%9F%E5%99%A8"><span class="nav-text">配置加速器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85%E3%80%81%E8%BF%90%E8%A1%8CDVWA%E9%9D%B6%E5%9C%BA"><span class="nav-text">Docker安装、运行DVWA靶场</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Latte</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98"><span class="nav-text">漏洞挖掘</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%AE%9A%E4%B9%89"><span class="nav-text">漏洞定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B-OWASP-Top-10-2021-and-part-of-Top-10-2017"><span class="nav-text">漏洞类型(OWASP Top 10 2021 and part of Top 10 2017)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA%E4%B9%8BDVWA"><span class="nav-text">漏洞靶场之DVWA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DVWA%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-text">DVWA的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DVWA%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">DVWA的使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E5%9F%BA%E7%A1%80"><span class="nav-text">Docker基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86Docker"><span class="nav-text">认识Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="nav-text">Docker安装和配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E5%92%8C%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC"><span class="nav-text">查看系统信息和内核版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2apt%E6%BA%90"><span class="nav-text">更换apt源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85%E5%92%8C%E9%AA%8C%E8%AF%81"><span class="nav-text">Docker安装和验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%81%9C%E7%AE%A1%E7%90%86"><span class="nav-text">启停管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%8A%A0%E9%80%9F%E5%99%A8"><span class="nav-text">配置加速器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker%E5%AE%89%E8%A3%85%E3%80%81%E8%BF%90%E8%A1%8CDVWA%E9%9D%B6%E5%9C%BA"><span class="nav-text">Docker安装、运行DVWA靶场</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/lazyload.min.js"></script>
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

