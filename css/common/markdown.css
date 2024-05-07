@@ -207,6 +207,7 @@ keep-tablet()
 .keep-markdown-body > img,
 .keep-markdown-body p > img {
   margin: var(--post-img-align);
+  margin: 0 auto;
 }
 .keep-markdown-body > .table-container {
   box-sizing: border-box;
