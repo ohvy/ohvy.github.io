@@ -9,7 +9,7 @@
     
     <title>
         
-            简易CPU的Verilog实现 |
+            渗透测试流程 |
         
         Latte&#39;s
     </title>
@@ -217,7 +217,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        简易CPU的Verilog实现
+                        渗透测试流程
                     </div>
                 
 
@@ -245,12 +245,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2023-01-26 14:09:59</span>
+                <span class="datetime">2023-05-08 10:40:43</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon May 06 2024 21:40:51 GMT+0800">2024-05-06 21:40:51</span>
+                <span class="datetime" data-updated="Fri May 17 2024 16:30:49 GMT+0800">2024-05-17 16:30:49</span>
             </span>
         
 
@@ -258,7 +258,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/">计算机组成与设计</a></li>
+                            <li class="category-item"><a href="/categories/%E6%B8%97%E9%80%8F%EF%BC%9A%E4%BB%8E0%E5%88%B01/">渗透：从0到1</a></li>
                         
                     
                 </ul>
@@ -269,10 +269,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/CPU/">CPU</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/">计算机组成与设计</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a></li>
                         
                     
                 </ul>
@@ -296,86 +293,30 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <p>本次实验需要实现一个 CPU 的运算器。简易运算器由三个 8 位寄存器（R0、R1、R2）和一个算术逻辑单元 (ALU) 构成，其中 ALU 应该至少支持加法、减法、乘法，与、或、或非、与非、比较的功能，输入由开关控制。</p>
-<span id="more"></span>
-<h1 id="实验任务及说明"><a href="#实验任务及说明" class="headerlink" title="实验任务及说明"></a>实验任务及说明</h1><h2 id="实验任务"><a href="#实验任务" class="headerlink" title="实验任务"></a>实验任务</h2><ul>
-<li>本次实验需要实现一个 CPU 的运算器。简易运算器由三个 8 位寄存器（R0、R1、R2）和一个算术逻辑单元 (ALU) 构成，其中 ALU 应该至少支持加法、减法、乘法，与、或、或非、与非、比较的功能。</li>
-<li>输入由开关控制；每一步运算后，相应标志位（标志位设置同实验四）的情况通过 LED 灯表示；运算结果以十进制通过数码管显示。读取数据的结果以十进制通过数码管显示。</li>
-<li>时钟信号、复位信号等控制信号允许用开关控制。</li>
-</ul>
-<blockquote>
-<p>注：1. 本次实验涉及的数据皆为补码。<br>2. 实验说明给出的默认指令集由定长指令构成，其中指令的操作码为变长操作码。</p>
-</blockquote>
-<h2 id="实验说明"><a href="#实验说明" class="headerlink" title="实验说明"></a>实验说明</h2><ol>
-<li>实验使用八位二进制串（b7b6b5b4b3b2b1b0）表示指令，与开发板上的八个开关对应。</li>
-<li>实验使用四位二进制补码作为输入，与开发板上的四个开关对应。</li>
-<li>三个寄存器 R0，R1，R2 分别对应二进制地址码 00,01,10.</li>
-</ol>
-<h3 id="运算指令格式"><a href="#运算指令格式" class="headerlink" title="运算指令格式"></a>运算指令格式</h3><p>高四位 (b7b6b5b4) 为操作码，次低两位（b3b2）为地址码（指明存放第一个操作数的寄存器），最低两位 (b1b0) 为地址码（指明存放第二个操作数的寄存器）。</p>
-<blockquote>
-<p>注：运算结果始终默认存放至寄存器 R2 因此不在指令中显式指出。有符号乘法的结果若超过8 比特应当解释为溢出。</p>
-</blockquote>
-<p>操作码对应的运算操作由下表说明，其中 A 表示第一个操作数，B 表示第二个操作数。</p>
-<table>
-<thead>
-<tr>
-<th>运算指令的操作码（b7b6b5b4）</th>
-<th>运算操作</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0000</td>
-<td>A &amp; B</td>
-</tr>
-<tr>
-<td>0001</td>
-<td>A | B</td>
-</tr>
-<tr>
-<td>0010</td>
-<td>A+B</td>
-</tr>
-<tr>
-<td>0110</td>
-<td>A-B</td>
-</tr>
-<tr>
-<td>0111</td>
-<td>有符号数比较</td>
-</tr>
-<tr>
-<td>1100</td>
-<td>∼(A</td>
-</tr>
-<tr>
-<td>1101</td>
-<td>∼(A &amp; B)</td>
-</tr>
-<tr>
-<td>1110</td>
-<td>A * B</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>例：<br><br>指令 0010-0001 表示计算寄存器 R0 的值加上寄存器 R1 的值。<br><br>指令 0110-0110 表示计算寄存器 R1 的值减去寄存器 R2 的值。</p>
-</blockquote>
-<h3 id="存储指令格式"><a href="#存储指令格式" class="headerlink" title="存储指令格式"></a>存储指令格式</h3><p>最高两位（b7b6）为操作码置 10，次高两位（b5b4）为写入寄存器的地址码，低四位（b3b2b1b0）为待写入数据的二进制补码。</p>
-<h3 id="读取指令格式"><a href="#读取指令格式" class="headerlink" title="读取指令格式"></a>读取指令格式</h3><p>最高六位（b7b6b5b4b3b2）为操作码置 111100，最低两位（b1b0）为地址码置 10。要求该指令可读取寄存器 R2 的值并以十进制通过数码管显示。</p>
-<blockquote>
-<p>注：不强制要求支持读取并显示 R0，R1 寄存器的数据。</p>
-</blockquote>
-<h1 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h1><h2 id="数据通路的设计"><a href="#数据通路的设计" class="headerlink" title="数据通路的设计"></a>数据通路的设计</h2><p>在简易CPU的基础上，进行了数据通路的设计，如下图所示</p>
-<img  
+                    <p>渗透测试就是利用我们所掌握的渗透知识，对网站进行一步一步的渗透，发现其中存在的漏洞和隐藏的风险，然后撰写一篇测试报告，提供给我们的客户。客户根据我们撰写的测试报告，对网站进行漏洞修补，以防止黑客的入侵。渗透测试的前提是我们得经过用户的授权，遵守《网络安全法》，才可以对网站进行渗透。</p>
+<p>渗透测试可以分为<code>白盒测试</code>和<code>黑盒测试</code>，白盒测试d</p>
+<p>一次完整的渗透测试应包括确定目标、信息收集、漏洞探测、漏洞利用getshell、内网转发、内网渗透、痕迹清除、撰写渗透测试报告八个过程，如下图所示：</p>
+<p><img  
                        lazyload
                        alt="image"
-                       data-src="/2023/01/26/%E7%AE%80%E6%98%93CPU%E7%9A%84Verilog%E5%AE%9E%E7%8E%B0/shujutonglu.png"
-                        class="" title="数据通路"
-                 >
+                       data-src="/images/%E6%B8%97%E9%80%8F%E6%B5%81%E7%A8%8B.png"
+                        alt="渗透测试流程"
+                 ></p>
+<p>渗透测试分为<strong>白盒测试</strong>和<strong>黑盒测试</strong>，白盒测试就是在知道目标网站源码和其他一些信息的情况下对其进行渗透，类似于代码审计；黑盒测试就是仅有网站或系统的地址，其他均未知，是站在正常用户或黑客的角度对网站的渗透（模拟黑客行为）。</p>
+<h1 id="确认目标"><a href="#确认目标" class="headerlink" title="确认目标"></a>确认目标</h1><p>在进行渗透测试之前，需要明确测试的目标和范围。测试目标通常包括系统的安全性、网络架构、应用程序等方面。 测试范围则包括要测试的计算机系统、应用程序、网络等。确定目标和范围有助于确保测试的准确性和有效性。</p>
+<p>例如授权我们一定范围的IP地址 10.102.xx.10-10.102.xx.123, 部分给定的URL, 给定的域名等。</p>
+<h1 id="信息收集-或资产收集"><a href="#信息收集-或资产收集" class="headerlink" title="信息收集(或资产收集)"></a>信息收集(或资产收集)</h1><p>信息收集即从旁观者的角度了解整个WEB应用乃至整个目标的全貌，但是资产是收集不完的，可以边收集，边进行一定程度的测试。信息收集对于渗透测试前期来说是非常重要的，因为只有我们掌握了目标网站或目标主机足够多的信息之后，我们才能更好地对其进行漏洞检测。可以分为主动和被动信息收集。</p>
+<h2 id="被动信息收集"><a href="#被动信息收集" class="headerlink" title="被动信息收集"></a>被动信息收集</h2><p>利用第三方的服务对目标进行访问信息收集，例如Google搜索、Shodan搜索，以了解：</p>
+<ul>
+<li>域名注册信息、真实IP、子域名、旁站、C段等</li>
+<li>公司敏感信息网上搜集</li>
+<li>网站指纹识别（Web容器或者CMS）</li>
+<li>整站分析（服务器类型、网站容器、脚本类型、数据库类型等）</li>
+</ul>
+<p>常用的搜索引擎语法查询子域名详细用法如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">site: =主域名,搜索其主要域名下面的子域名</span><br><span class="line">allintext: = 搜索文本,但不包括网页标题和链接</span><br><span class="line">allinlinks: = 搜索链接, 不包括文本和标题</span><br><span class="line">related:URL = 列出于目标URL地址有关的网页</span><br><span class="line">link:URL = 列出到链接到目标URL的网页清单</span><br><span class="line">使用“-”去掉不想看的结果，例如 site : http://baidu.com  http://-image.baidu.com</span><br></pre></td></tr></table></figure>
 
-<p>CPU 实现在 Control、ALU、Reg 三个模块之上。其中 Control 模块用来处理来自开关的数据，获取使能信号；ALU 模块用来进行算术逻辑运算；Reg 模块用来处理数据的存储与读取。</p>
-<h2 id="Control-模块的设计与实现"><a href="#Control-模块的设计与实现" class="headerlink" title="Control 模块的设计与实现"></a>Control 模块的设计与实现</h2><p>如上文所言，Control 控制层需要接收来自开关的 opcode 指令，然后根据指令判断是否存入(EnWrite)、读取 (EnRead_single)、调用 ALU 运算 (alu)。同时，Control 模块还需要接收复位信号 (也就是这里的 Enter)，当 Enter 为 1 时，对已经完成输入的 opcde 进行处理，并返回 OP 指令，供后续模块调用；当 Enter 为 0 时，将所有使能信号置零，并且不输出 OP 指令。实现代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<h2 id="主动信息收集"><a href="#主动信息收集" class="headerlink" title="主动信息收集"></a>主动信息收集</h2>
                 </div>
                 
 
@@ -385,11 +326,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/CPU/">CPU</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/">计算机组成与设计</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
                                     </li>
                                 
                             </ul>
@@ -431,14 +368,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2023/01/28/%E9%9B%86%E8%AE%ADWriteUp-3/"
-                                   title="集训WriteUp-3"
+                                   href="/2024/05/11/%E4%BA%94%E6%9C%88%E6%8A%95%E9%80%92%E4%B8%8E%E9%9D%A2%E8%AF%95/"
+                                   title="五月"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">集训WriteUp-3</span>
+                                        <span class="post-nav-title-item text-ellipsis">五月</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -448,11 +385,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2023/01/15/%E9%9B%86%E8%AE%ADWriteUp-2/"
-                                   title="集训WriteUp-2"
+                                   href="/2023/04/09/2023TimeKeeper-X-HashTeam/"
+                                   title="2023TimeKeeper-X-HashTeam"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">集训WriteUp-2</span>
+                                        <span class="post-nav-title-item text-ellipsis">2023TimeKeeper-X-HashTeam</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -480,7 +417,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%BB%E5%8A%A1%E5%8F%8A%E8%AF%B4%E6%98%8E"><span class="nav-text">实验任务及说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%BB%E5%8A%A1"><span class="nav-text">实验任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AF%B4%E6%98%8E"><span class="nav-text">实验说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">运算指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">存储指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">读取指令格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-text">实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-text">数据通路的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Control-%E6%A8%A1%E5%9D%97%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-text">Control 模块的设计与实现</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E8%AE%A4%E7%9B%AE%E6%A0%87"><span class="nav-text">确认目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%88%96%E8%B5%84%E4%BA%A7%E6%94%B6%E9%9B%86"><span class="nav-text">信息收集(或资产收集)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-text">被动信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-text">主动信息收集</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -643,7 +580,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%BB%E5%8A%A1%E5%8F%8A%E8%AF%B4%E6%98%8E"><span class="nav-text">实验任务及说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E4%BB%BB%E5%8A%A1"><span class="nav-text">实验任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%AF%B4%E6%98%8E"><span class="nav-text">实验说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">运算指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">存储指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">读取指令格式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-text">实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-text">数据通路的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Control-%E6%A8%A1%E5%9D%97%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-text">Control 模块的设计与实现</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E8%AE%A4%E7%9B%AE%E6%A0%87"><span class="nav-text">确认目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%88%96%E8%B5%84%E4%BA%A7%E6%94%B6%E9%9B%86"><span class="nav-text">信息收集(或资产收集)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-text">被动信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="nav-text">主动信息收集</span></a></li></ol></li></ol>
     </div>
 </div>
 
